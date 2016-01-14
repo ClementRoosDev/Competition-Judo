@@ -1,0 +1,53 @@
+﻿<Window x:Class="CompetitionJudo.UI.FenetreImpression"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FenetreImpression" Height="330" Width="440"
+        Icon="Resources/logoJCV.png" Background="#FFA8A8A8"
+        FontFamily="Segoe UI Light" 
+        FontSize="14" >
+    <GroupBox Margin="5,5,5,5" Header="Impression">
+        <StackPanel x:Name="baseStackPanel"   Margin="5,5,5,5" VerticalAlignment="Top">        
+            <StackPanel x:Name="teteStackPanel" Orientation="Horizontal" Margin="5,5,5,5">
+            <ComboBox MinWidth="40" Name="ComboBoxListeGroupes" ItemsSource="{Binding Mode=OneWay}" SelectionChanged="ListeGroupes_SelectionChanged" VerticalContentAlignment="Center"/>
+            <Button x:Name="BoutonPouleToTableau"  Click="BoutonPouleToTableau_Click" Margin="5,0">
+                <StackPanel Orientation="Horizontal">
+                        <Image Name="ImagePoule" Source="Resources\Poule.png" Width="40" Height="40" Margin="5,0" />
+                    <TextBlock Name="LabelPoule" Text="Poule" VerticalAlignment="Center" Margin="5,0,5,0" />
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" ></Separator>
+                    <TextBlock Name="LabelTableau" Text="Tableau" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                        <Image Name="ImageTableau" Source="Resources\Tableau.png" Width="40" Height="40" Margin="5,0" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel  Margin="5,0">
+            <ListView x:Name="tableauCompetiteurs" Height="138" ItemsSource="{Binding}" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nom" Width="88" DisplayMemberBinding="{Binding nom}" />
+                        <GridViewColumn Header="Prénom" Width="88" DisplayMemberBinding="{Binding prenom}" />
+                        <GridViewColumn Header="Club" Width="88" DisplayMemberBinding="{Binding club}" />
+                        <GridViewColumn Header="Poids" Width="40" DisplayMemberBinding="{Binding poids}" />
+                        <GridViewColumn Header="Catégorie" Width="70" DisplayMemberBinding="{Binding categorie}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel  Orientation="Horizontal" Margin="0,5">
+                <Button x:Name="BoutonImprimerUnSeulGroupe" Click="BoutonImprimerUnSeulGroupe_Click">
+                    <StackPanel Orientation="Horizontal">
+                            <Image Name="ImageSingle" Source="Resources\Single.png" Width="25" Height="35" Margin="5,0" />
+                        <TextBlock Text="Imprimer Le Groupe" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="BoutonImprimerTousLesGroupes" Click="BoutonImprimerTousLesGroupes_Click" Margin="5,0">
+                    <StackPanel Orientation="Horizontal">
+                            <Image Name="ImageMultiple" Source="Resources\Multiple.png" Width="30" Height="40" Margin="5,0" />
+                        <TextBlock Text="Imprimer Tous Les Groupes" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+       
+
+    </StackPanel>
+    </GroupBox>
+</Window>
