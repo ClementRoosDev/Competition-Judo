@@ -112,30 +112,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SplashScreen.xaml.cs">
-      <DependentUpon>SplashScreen.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Fenetre Stats.xaml">
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\FenetreCompetitionViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Page Include="Views\Fenetre Stats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenetreCompetition.xaml">
+    <Page Include="Views\FenetreCompetition.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenetreImpression.xaml">
+    <Page Include="Views\FenetreImpression.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenetreParametres.xaml">
+    <Page Include="Views\FenetreParametres.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenetreVide.xaml">
+    <Page Include="Views\FenetreVide.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -143,33 +143,29 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ColorationColonnes.cs" />
-    <Compile Include="Donnees\Donnee.cs" />
-    <Compile Include="Fenetre Stats.xaml.cs">
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="Views\ColorationColonnes.cs" />
+    <Compile Include="Views\Fenetre Stats.xaml.cs">
       <DependentUpon>Fenetre Stats.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FenetreCompetition.xaml.cs">
+    <Compile Include="Views\FenetreCompetition.xaml.cs">
       <DependentUpon>FenetreCompetition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FenetreImpression.xaml.cs">
+    <Compile Include="Views\FenetreImpression.xaml.cs">
       <DependentUpon>FenetreImpression.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClassesImages\ImageGroupe.cs" />
     <Compile Include="ClassesImages\ImagePoule.cs" />
-    <Compile Include="FenetreParametres.xaml.cs">
+    <Compile Include="Views\FenetreParametres.xaml.cs">
       <DependentUpon>FenetreParametres.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FenetreVide.xaml.cs">
+    <Compile Include="Views\FenetreVide.xaml.cs">
       <DependentUpon>FenetreVide.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SplashScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -203,131 +199,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ArrowPrev.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CompetitionJudo.BusinessDLL\CompetitionJudo.BusinessDLL.csproj">
+    <ProjectReference Include="..\CompetitionJudo.BusinessDLL\CompetitionJudo.Business.csproj">
       <Project>{c178160b-e27a-4d09-8f9e-26088ee54df9}</Project>
-      <Name>CompetitionJudo.BusinessDLL</Name>
+      <Name>CompetitionJudo.Business</Name>
       <Private>True</Private>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Fille.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ArrowNext.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Enregistrer.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\EstPresent.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Garcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Generer.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Imprimer.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\logoJCV.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\logoJCV2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Modifier.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Multiple.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\New.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Ouvrir.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Poule.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Presents.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Presrents.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Single.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Supprimer.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Tableau.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\templateP2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\templateP3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\templateP4.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\templateP5.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <ProjectReference Include="..\CompetitionJudo.Data\CompetitionJudo.Data.csproj">
+      <Project>{a7667256-4278-46ae-a495-f4118e27f99f}</Project>
+      <Name>CompetitionJudo.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -347,82 +227,43 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Importer.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Ouvrir2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Ajouter.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Tableau.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Ouvrir2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Fille2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Supprimer2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Garcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Fille2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Ajouter.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Supprimer3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Supprimer2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\stats.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Generer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\refresh.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Importer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Options2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Option1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Options3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Option1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Enregistrer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\tick.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Imprimer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\down.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\up.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\logoJudo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\BlackBelt.png" />
+    <Resource Include="Resources\stats.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

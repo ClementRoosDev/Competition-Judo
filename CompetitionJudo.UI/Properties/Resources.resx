@@ -118,20 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ArrowNext" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ArrowNext.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ArrowPrev" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ArrowPrev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ajouter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ajouter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Enregistrer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Enregistrer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="EstPresent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EstPresent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Fille" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fille.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Fille2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fille2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Garcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Garcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,103 +133,28 @@
   <data name="Generer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Generer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Imprimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Imprimer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoJCV" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoJCV.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoJCV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoJCV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Modifier" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Modifier.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Multiple" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Multiple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="New" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\New.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Ouvrir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ouvrir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Poule" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Poule.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Presents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Presents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Presrents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Presrents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Single" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Single.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Supprimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Supprimer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tableau" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tableau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="templateP2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\templateP2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="templateP3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\templateP3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="templateP4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\templateP4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="templateP5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\templateP5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Ajouter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ajouter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Importer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Importer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ouvrir2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ouvrir2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Supprimer2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Supprimer2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Fille2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fille2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Supprimer3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Supprimer3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stats.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Imprimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Imprimer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Option1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Option1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Options2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Options2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ouvrir2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ouvrir2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Options3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Options3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stats.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Supprimer2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Supprimer2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoJudo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoJudo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BlackBelt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BlackBelt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tableau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tableau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

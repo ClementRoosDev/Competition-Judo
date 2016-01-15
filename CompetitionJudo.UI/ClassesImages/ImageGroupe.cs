@@ -8,7 +8,7 @@ using CompetitionJudo.Business;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using System.Windows.Media;
-
+using CompetitionJudo.Data;
 
 namespace CompetitionJudo.UI
 {
