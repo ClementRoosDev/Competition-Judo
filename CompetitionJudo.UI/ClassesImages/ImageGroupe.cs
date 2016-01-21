@@ -37,41 +37,41 @@ namespace CompetitionJudo.UI
         {
             if (groupe.typeGroupe == TypeGroupe.Tableau)
             {
-                if (groupe.competiteurs.Count <= 4)
+                if (groupe.Competiteurs.Count <= 4)
                 {
-                    poule = new TableauDe4(groupe.competiteurs);
+                    poule = new TableauDe4(groupe.Competiteurs);
                 }
-                if (groupe.competiteurs.Count > 4 && groupe.competiteurs.Count <= 8)
+                if (groupe.Competiteurs.Count > 4 && groupe.Competiteurs.Count <= 8)
                 {
-                    poule = new TableauDe8(groupe.competiteurs);
+                    poule = new TableauDe8(groupe.Competiteurs);
                 }
-                if (groupe.competiteurs.Count > 8 && groupe.competiteurs.Count <= 16)
+                if (groupe.Competiteurs.Count > 8 && groupe.Competiteurs.Count <= 16)
                 {
-                    poule = new TableauDe16(groupe.competiteurs);
+                    poule = new TableauDe16(groupe.Competiteurs);
                 }
-                if (groupe.competiteurs.Count > 16 && groupe.competiteurs.Count <= 32)
+                if (groupe.Competiteurs.Count > 16 && groupe.Competiteurs.Count <= 32)
                 {
-                    poule = new TableauDe32(groupe.competiteurs);
+                    poule = new TableauDe32(groupe.Competiteurs);
                 }
             }
             else
             {
-                switch (groupe.competiteurs.Count())
+                switch (groupe.Competiteurs.Count())
                 {
                     case 2:                        
-                         poule = new PouleDe2(groupe.competiteurs);
+                         poule = new PouleDe2(groupe.Competiteurs);
                          break;
                     case 3:                        
-                        poule = new PouleDe3(groupe.competiteurs); 
+                        poule = new PouleDe3(groupe.Competiteurs); 
                         break;
                     case 4:
-                        poule = new PouleDe4(groupe.competiteurs); 
+                        poule = new PouleDe4(groupe.Competiteurs); 
                         break;
                     case 5:
-                        poule = new PouleDe5(groupe.competiteurs); 
+                        poule = new PouleDe5(groupe.Competiteurs); 
                         break;
                     case 6:
-                        poule = new PouleDe6(groupe.competiteurs); 
+                        poule = new PouleDe6(groupe.Competiteurs); 
                         break;
                 }
             }
@@ -79,7 +79,7 @@ namespace CompetitionJudo.UI
 
         private void DrawCompetiteurs()
         {
-            for (int i = 0; i < this.groupe.competiteurs.Count(); i++)
+            for (int i = 0; i < this.groupe.Competiteurs.Count(); i++)
             {
                 
             }

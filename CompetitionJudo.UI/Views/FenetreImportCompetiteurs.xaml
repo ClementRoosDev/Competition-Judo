@@ -1,0 +1,42 @@
+﻿<Window x:Class="CompetitionJudo.UI.FenetreImportCompetiteurs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Importer" 
+        Height="auto" 
+        Width="auto"
+        Background="#FFA8A8A8" 
+        FontFamily="Segoe UI Light" 
+        FontSize="14" >
+    <GroupBox Header="Importer" Margin="5,5,5,5" >
+    <StackPanel Orientation="Vertical">        
+            <ContentControl MaxHeight="300">
+                <DataGrid Name="GrilleCompetiteur" Margin="5,5,5,5" ItemsSource="{Binding ListeNouveauxCompetiteur}" CanUserAddRows="False" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserSortColumns="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nom"  Width="0.25*"  Binding="{Binding Nom}" />
+                        <DataGridTextColumn Header="Prénom"  Width="0.25*"  Binding="{Binding Prenom}" />
+                        <DataGridTextColumn Header="Club"  Width="0.25*"  Binding="{Binding Club}" />
+                        <DataGridTextColumn Header="Poids"  Width="0.25*"  Binding="{Binding Poids}" />
+                        <DataGridTextColumn Header="Sexe"  Width="0.25*"  Binding="{Binding Sexe}" />
+                        <DataGridTextColumn Header="Catégorie"  Width="0.25*"  Binding="{Binding Categorie}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </ContentControl>
+        
+            <StackPanel Orientation="Horizontal">
+            <Button Name="ButtonOk" HorizontalAlignment="Right" Width="100" Margin="10,0" Height="45" Click="ButtonOk_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image  Source="/Resources/Ajouter.png" Width="25" Height="25" Margin="5,0"/>
+                    <TextBlock Text="Importer" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="ButtonAnnuler" HorizontalAlignment="Right" Width="100" Margin="10,0" Height="45" Click="ButtonAnnuler_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image  Source="/Resources/Supprimer3.png" Width="25" Height="25" Margin="5,0"/>
+                    <TextBlock Text="Annuler" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>        
+    </StackPanel>
+    </GroupBox>
+</Window>

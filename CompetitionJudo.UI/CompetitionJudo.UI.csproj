@@ -114,6 +114,8 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\FenetreCompetitionViewModel.cs" />
+    <Compile Include="ViewModel\FenetreImportCompetiteursViewModel.cs" />
+    <Compile Include="ViewModel\FenetreParametresViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Page Include="Views\Fenetre Stats.xaml">
       <SubType>Designer</SubType>
@@ -131,7 +133,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FenetreVide.xaml">
+    <Page Include="Views\FenetreImportCompetiteurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,8 +161,8 @@
     <Compile Include="Views\FenetreParametres.xaml.cs">
       <DependentUpon>FenetreParametres.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FenetreVide.xaml.cs">
-      <DependentUpon>FenetreVide.xaml</DependentUpon>
+    <Compile Include="Views\FenetreImportCompetiteurs.xaml.cs">
+      <DependentUpon>FenetreImportCompetiteurs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -264,6 +266,30 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\stats.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Single.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Multiple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logoJCV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Poule.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Supprimer3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\down.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
