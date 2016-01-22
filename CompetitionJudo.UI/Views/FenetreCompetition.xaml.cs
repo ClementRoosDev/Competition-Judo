@@ -113,7 +113,8 @@ namespace CompetitionJudo.UI
         }
         #endregion
 
-        #region Clic Supprimer compétiteur
+        #region Methods
+
         private void boutonSupprimerCompetiteur_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult rsltMessageBox = MessageBox.Show("Supprimer un compétiteur ?", "", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
@@ -124,11 +125,6 @@ namespace CompetitionJudo.UI
                 VM.SupprimerCompetiteur(c);
             }
         }
-        #endregion
-
-        #region Methods
-
-
 
         //Import depuis CSV
         private void boutonImporterExcel_Click(object sender, RoutedEventArgs e)
@@ -173,19 +169,10 @@ namespace CompetitionJudo.UI
         //Résultats généraux
         private void ButtonResultatClub_Click(object sender, RoutedEventArgs e)
         {
-            var listClub = VM.Donnee.ListeCompetiteurs.Where(c => c.Resultat != 0).GroupBy(c => c.Club).Select(f => new { Club = f.Key, Moyenne = f.Average(g => g.Resultat), NombreEngages = f.Count() });
-            listClub = listClub.OrderBy(c => c.Moyenne);
-            List<ResultatCompetition> listeResult = new List<ResultatCompetition>();
-            int placeFinale = 1;
-            foreach (var item in listClub)
-            {
-                listeResult.Add(new ResultatCompetition { place = placeFinale, club = item.Club, placeMoyenne = Math.Round((double)item.Moyenne, 2), NombreEngages = item.NombreEngages });
-                placeFinale++;
-            }
 
-            Fenetre_Stats fenetreStats = new Fenetre_Stats(listeResult);
-            fenetreStats.loadDatas();
-            fenetreStats.Show();
+
+            Fenetre_Stats fenetreStats = new Fenetre_Stats(VM.Donnee.ListeCompetiteurs.ToList());
+            fenetreStats.ShowDialog();
         }
 
         //coche ou dechoche toutes les checkbox impression 

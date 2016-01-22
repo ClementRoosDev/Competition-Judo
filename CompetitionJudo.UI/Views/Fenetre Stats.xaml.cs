@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CompetitionJudo.UI.ViewModel;
 
 namespace CompetitionJudo.UI
 {
@@ -21,18 +22,18 @@ namespace CompetitionJudo.UI
     /// </summary>
     public partial class Fenetre_Stats : Window
     {
-        private List<ResultatCompetition> resultatClubs;
+        FenetreStatsViewModel VM;       
 
-        public Fenetre_Stats(List<ResultatCompetition> resultatClubs)
+        public Fenetre_Stats(List<Competiteur> listeCompetiteurs)
         {
             InitializeComponent();
-            this.resultatClubs = resultatClubs;
+            FenetreStatsViewModel VM = new FenetreStatsViewModel(listeCompetiteurs);
+            this.DataContext = VM;
+            VM.CalculeClassement();
+            
         }
 
-        public void loadDatas()
-        {
-            GrilleResultats.DataContext = resultatClubs;
-        }
+
 
         private void ButtonImprimerStats_Click(object sender, RoutedEventArgs e)
         {

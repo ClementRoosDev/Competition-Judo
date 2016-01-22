@@ -4,16 +4,15 @@
         Title="Stats" Height="360" Width="500"
         Background="#FFA8A8A8" 
         FontFamily="Segoe UI Light" 
-        FontSize="14" 
-        Icon="Resources/logoJCV.png">
+        FontSize="14" >
     <GroupBox Header="Résultats" Margin="5,5,5,5" >
         <StackPanel Orientation="Vertical">
             <ContentControl MaxHeight="240" >
-                <DataGrid Name="GrilleResultats"  Margin="5,5,5,5" ItemsSource="{Binding}" CanUserAddRows="False" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserSortColumns="True">
+                <DataGrid Name="GrilleResultats"  Margin="5,5,5,5" ItemsSource="{Binding ResultatClubs}" CanUserAddRows="False" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserSortColumns="True">
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Résultat"  Width="1.2*"  Binding="{Binding place}" />
-            <DataGridTextColumn Header="Club"  Width="2*"  Binding="{Binding club}" />
-            <DataGridTextColumn Header="Moyenne résultats"  Width="2.5*"  Binding="{Binding placeMoyenne}" />
+            <DataGridTextColumn Header="Résultat"  Width="1.2*"  Binding="{Binding Place}" />
+            <DataGridTextColumn Header="Club"  Width="2*"  Binding="{Binding Club}" />
+            <DataGridTextColumn Header="Moyenne résultats"  Width="2.5*"  Binding="{Binding PlaceMoyenne}" />
             <DataGridTextColumn Header="Nombre d'engagés"  Width="3*"  Binding="{Binding NombreEngages}" />
         </DataGrid.Columns>
     </DataGrid>

@@ -8,9 +8,9 @@ namespace CompetitionJudo.Data
 {
     public class ResultatCompetition
     {
-        public int place { get; set; }
-        public string club {get;set;}
-        public double placeMoyenne {get;set;}
+        public int Place { get; set; }
+        public string Club {get;set;}
+        public double PlaceMoyenne {get;set;}
         public int NombreEngages { get; set; }
     }
 }

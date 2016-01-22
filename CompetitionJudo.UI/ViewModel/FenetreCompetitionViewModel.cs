@@ -230,7 +230,7 @@ namespace CompetitionJudo.UI.ViewModel
         {
             get
             {
-                return Enum.GetValues(typeof(Categories)).Cast<Categories>().Where(c=>c!=Categories.Tous).ToList();
+                return Enum.GetValues(typeof(Categories)).Cast<Categories>().Where(c => c != Categories.Tous).ToList();
             }
         }
 
@@ -394,7 +394,7 @@ namespace CompetitionJudo.UI.ViewModel
 
         private List<List<Competiteur>> listePourImpression = new List<List<Competiteur>>();
 
-#endregion
+        #endregion
 
         #region Constructor
 
@@ -407,6 +407,43 @@ namespace CompetitionJudo.UI.ViewModel
         #endregion
 
         #region Methods
+
+        public void SupprimerCompetiteur(Competiteur c)
+        {
+            Donnee.ListeCompetiteurs.Remove(c);
+            OnPropertyChanged("ListeClubs");
+            OnPropertyChanged("StatsCompetiteursInscrits");
+            OnPropertyChanged("StatsCompetiteursPresents");
+            OnPropertyChanged("ListeCompetiteurs");
+        }
+
+        public void QuickAddCompetiteur(Competiteur competiteur)
+        {
+            Competiteur Comp = Donnee.ListeCompetiteurs.Where(c => c.Nom.ToLower().Equals(competiteur.Nom.ToLower()) && c.Prenom.ToLower().Equals(competiteur.Prenom.ToLower())).FirstOrDefault();
+
+            if (Comp == null)
+            {
+                Donnee.ListeCompetiteurs.Add(competiteur);
+                OnPropertyChanged("ListeCompetiteurs");
+            }
+            else
+            {
+                if (MessageBox.Show(string.Format("Un judoka identique existe déjà : {0}-{1} {2} {3}kg {4} {5} Ajouter quand même : {6}-{7} {8} {9}kg {10}",
+                    Environment.NewLine, Comp.Nom, Comp.Prenom, Comp.Poids, Comp.Categorie,
+                    Environment.NewLine,
+                    Environment.NewLine, competiteur.Nom, competiteur.Prenom, competiteur.Poids, competiteur.Categorie), "Doublon", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+
+                }
+                else
+                {
+                    Donnee.ListeCompetiteurs.Add(competiteur);
+
+                }
+            }
+            OnPropertyChanged("ListeCompetiteurs");
+            OnPropertyChanged("ListeClubs");
+        }
 
         private void ResetChampsNouveauCompetiteur()
         {
@@ -544,22 +581,19 @@ namespace CompetitionJudo.UI.ViewModel
             OnPropertyChanged("ListeCompetiteurs");
         }
 
-        public void SupprimerCompetiteur(Competiteur c)
-        {
-            Donnee.ListeCompetiteurs.Remove(c);
-            OnPropertyChanged("ListeClubs");
-            OnPropertyChanged("StatsCompetiteursInscrits");
-            OnPropertyChanged("StatsCompetiteursPresents");
-            OnPropertyChanged("ListeCompetiteurs");
-        }
-
         private void ImprimerGroupes()
         {
-            if (Donnee.ListeCompetiteurs.Where(c => c.PourImpression).Count() >= Donnee.NombreParPoule)
+            if (Donnee.ListeCompetiteurs.Any(c => c.PourImpression && c.Poule == null))
+            {
+                List<Competiteur> competiteursNonValides = Donnee.ListeCompetiteurs.Where(c => c.PourImpression && c.Poule == null).ToList();
+                competiteursNonValides.OrderBy(c => c.Nom);
+                MessageBox.Show(String.Format("{0}{1}Nom : {2}", "Des competiteurs ne sont pas présents", Environment.NewLine, string.Join(" ,", competiteursNonValides.Select(c => c.Nom)), "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
+            }
+            else
             {
                 var listegroupes = new List<int>();
 
-                foreach (var competiteur in Donnee.ListeCompetiteurs)
+                foreach (var competiteur in Donnee.ListeCompetiteurs.Where(c => c.PourImpression))
                 {
                     if (competiteur.Poule != null)
                     {
@@ -571,23 +605,17 @@ namespace CompetitionJudo.UI.ViewModel
                 }
 
                 var lesGroupes = new List<Groupe>();
+
                 foreach (var groupe in listegroupes)
                 {
-                    var groupeTemp = new Groupe() { MaxCompetiteursParGroupe = Donnee.NombreParPoule };
-                    groupeTemp.id = groupe;
-                    foreach (var comp in Donnee.ListeCompetiteurs)
-                    {
-                        if (comp.Poule == groupe)
-                        {
-                            if (comp.PourImpression)
-                                groupeTemp.Competiteurs.Add(comp);
-                        }
-                    }
+                    var groupeTemp = new Groupe() { MaxCompetiteursParPoule = Donnee.NombreParPoule, id = groupe };
+
+                    groupeTemp.Competiteurs.AddRange(Donnee.ListeCompetiteurs.Where(c => c.Poule == groupe && c.PourImpression));
                     lesGroupes.Add(groupeTemp);
                 }
                 if (!lesGroupes.Any(g => !g.EstValide))
                 {
-                    var fenetreImpression = new FenetreImpression(lesGroupes, Donnee);
+                    var fenetreImpression = new FenetreImpression(lesGroupes, Donnee.NomCompetition, Donnee.DateCompetition);
                     fenetreImpression.ShowDialog();
                 }
                 else
@@ -597,39 +625,7 @@ namespace CompetitionJudo.UI.ViewModel
                     MessageBox.Show(String.Format("{0}{1}Poules n° : {2}", "Des poules ont un mauvais nombre de compétiteurs ", Environment.NewLine, string.Join(", ", listeGroupesNonValides), "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
                 }
             }
-            else
-            {
-                MessageBox.Show("Pas assez de compétiteurs selectionnés pour l'impression ", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
 
-        }
-
-        public void QuickAddCompetiteur(Competiteur competiteur)
-        {
-            Competiteur Comp = Donnee.ListeCompetiteurs.Where(c => c.Nom.ToLower().Equals(competiteur.Nom.ToLower()) && c.Prenom.ToLower().Equals(competiteur.Prenom.ToLower())).FirstOrDefault();
-
-            if (Comp == null)
-            {
-                Donnee.ListeCompetiteurs.Add(competiteur);
-                OnPropertyChanged("ListeCompetiteurs");
-            }
-            else
-            {
-                if (MessageBox.Show(string.Format("Un judoka identique existe déjà : {0}-{1} {2} {3}kg {4} {5} Ajouter quand même : {6}-{7} {8} {9}kg {10}",
-                    Environment.NewLine, Comp.Nom, Comp.Prenom, Comp.Poids, Comp.Categorie,
-                    Environment.NewLine,
-                    Environment.NewLine, competiteur.Nom, competiteur.Prenom, competiteur.Poids, competiteur.Categorie), "Doublon", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-                {
-
-                }
-                else
-                {
-                    Donnee.ListeCompetiteurs.Add(competiteur);
-                    
-                }
-            }
-            OnPropertyChanged("ListeCompetiteurs");
-            OnPropertyChanged("ListeClubs");
         }
 
         #endregion

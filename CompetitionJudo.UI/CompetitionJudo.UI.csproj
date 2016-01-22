@@ -115,7 +115,9 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\FenetreCompetitionViewModel.cs" />
     <Compile Include="ViewModel\FenetreImportCompetiteursViewModel.cs" />
+    <Compile Include="ViewModel\FenetreImpressionViewModel.cs" />
     <Compile Include="ViewModel\FenetreParametresViewModel.cs" />
+    <Compile Include="ViewModel\FenetreStatsViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Page Include="Views\Fenetre Stats.xaml">
       <SubType>Designer</SubType>

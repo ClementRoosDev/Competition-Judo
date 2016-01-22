@@ -7,7 +7,7 @@ namespace CompetitionJudo.Data
 {
     public class Groupe
     {
-        public int MaxCompetiteursParGroupe;
+        public int MaxCompetiteursParPoule;
         private bool estValide;
 
         public bool EstValide
@@ -15,7 +15,7 @@ namespace CompetitionJudo.Data
             get
             {
 
-                return (Competiteurs.Count > 1 && Competiteurs.Count <= MaxCompetiteursParGroupe);
+                return (Competiteurs.Count > 1);
             }
             set
             {

@@ -23,11 +23,11 @@
             <ListView x:Name="tableauCompetiteurs" Height="138" ItemsSource="{Binding}" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Nom" Width="88" DisplayMemberBinding="{Binding nom}" />
-                        <GridViewColumn Header="Prénom" Width="88" DisplayMemberBinding="{Binding prenom}" />
-                        <GridViewColumn Header="Club" Width="88" DisplayMemberBinding="{Binding club}" />
-                        <GridViewColumn Header="Poids" Width="40" DisplayMemberBinding="{Binding poids}" />
-                        <GridViewColumn Header="Catégorie" Width="70" DisplayMemberBinding="{Binding categorie}" />
+                        <GridViewColumn Header="Nom" Width="88" DisplayMemberBinding="{Binding Nom}" />
+                        <GridViewColumn Header="Prénom" Width="88" DisplayMemberBinding="{Binding Prenom}" />
+                        <GridViewColumn Header="Club" Width="88" DisplayMemberBinding="{Binding Club}" />
+                        <GridViewColumn Header="Poids" Width="40" DisplayMemberBinding="{Binding Poids}" />
+                        <GridViewColumn Header="Catégorie" Width="70" DisplayMemberBinding="{Binding Categorie}" />
                     </GridView>
                 </ListView.View>
             </ListView>
