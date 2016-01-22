@@ -21,6 +21,7 @@ namespace CompetitionJudo.UI.ViewModel
             this.cheminFichier = cheminFichier;
             this.action = action;
             listeNouveauxCompetiteur = new List<Competiteur>();
+            ImporterFichier();
         }
 
         public List<Competiteur> ListeNouveauxCompetiteur
@@ -38,18 +39,13 @@ namespace CompetitionJudo.UI.ViewModel
 
         public async void ImporterFichier()
         {
-            ExcelImport ExcelImport = new ExcelImport();
-            if (cheminFichier.Contains(".csv"))
-            {
-                ListeNouveauxCompetiteur = await ExcelImport.ImporterCSV(cheminFichier);
-            }
-            if (cheminFichier.Contains(".xls"))
-            {
-                ListeNouveauxCompetiteur = ExcelImport.ImporterXLS(cheminFichier);
-            }
+            ExcelImport Import = new ExcelImport();
+            //await Import.ImporterCSV(cheminFichier);
+            
+            Import.ImporterXLS(cheminFichier);
 
             OnPropertyChanged("ListeNouveauxCompetiteur");
-        }
 
+        }
     }
 }

@@ -132,7 +132,7 @@ namespace CompetitionJudo.UI
             try
             {
                 var dialog = new OpenFileDialog();
-                dialog.Filter = "csv files (*.csv)|*.csv";
+                dialog.Filter = "Files (*.csv;*.xls;*xlsx)|*.csv;*.xls;*.xlsx";
                 if ((bool)dialog.ShowDialog())
                 {
                     Action<Competiteur> addCompetiteursCallback = addCompetiteurs;
@@ -169,8 +169,6 @@ namespace CompetitionJudo.UI
         //Résultats généraux
         private void ButtonResultatClub_Click(object sender, RoutedEventArgs e)
         {
-
-
             Fenetre_Stats fenetreStats = new Fenetre_Stats(VM.Donnee.ListeCompetiteurs.ToList());
             fenetreStats.ShowDialog();
         }
