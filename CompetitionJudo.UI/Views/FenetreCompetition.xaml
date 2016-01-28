@@ -58,7 +58,7 @@
                     <StackPanel Orientation="Vertical">
                         <Button x:Name="boutonGenererPoules" HorizontalAlignment="Right" Width="140"  Margin="10,5" Height="40" Command="{Binding ClickGenererGroupes}">
                             <StackPanel Orientation="Horizontal">
-                                <Image  Name="ImageGenerer" Source="/Resources/Generer.png" Width="25" Height="30" Margin="5,0"/>
+                                <Image  Name="ImageGenerer" Source="/Resources/process.png" Width="25" Height="30" Margin="5,0"/>
                                 <TextBlock Text="Génerer poules" VerticalAlignment="Center"></TextBlock>
                             </StackPanel>
                         </Button>
@@ -70,13 +70,6 @@
                         </Button>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
-                        <Button x:Name="boutonResetImpression" HorizontalAlignment="Right" Width="140" Margin="10,5" Height="40" >
-                            <StackPanel Orientation="Horizontal">
-                                <Image Name="ImageModifier" Source="/Resources/refresh.png" Width="25" Height="25" Margin="5,0"/>
-                                <TextBlock Text="Ràz Impression" VerticalAlignment="Center"></TextBlock>
-                            </StackPanel>
-                        </Button>
-                        
                         <Button Name="boutonParametres" HorizontalAlignment="Right" Width="140" Margin="10,5" Height="40" Click="boutonParametres_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/Option1.png" Width="25" Height="25" Margin="5,0"/>

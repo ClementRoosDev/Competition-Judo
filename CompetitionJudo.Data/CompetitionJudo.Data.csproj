@@ -84,18 +84,6 @@
     <None Include="Resources\template.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\templateP2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\templateP3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\templateP4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\templateP5.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\TemplateT4.png" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TemplateT8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\templateP2.png" />
+    <Content Include="Resources\templateP3.png" />
+    <Content Include="Resources\templateP4.png" />
+    <Content Include="Resources\templateP5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

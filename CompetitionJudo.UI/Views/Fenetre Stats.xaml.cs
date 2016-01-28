@@ -40,7 +40,7 @@ namespace CompetitionJudo.UI
             try
             {
                 System.Windows.Controls.PrintDialog Printdlg = new System.Windows.Controls.PrintDialog();
-                if ((bool)Printdlg.ShowDialog().GetValueOrDefault())
+                if (Printdlg.ShowDialog().GetValueOrDefault())
                 {
                     Size pageSize = new Size(Printdlg.PrintableAreaWidth, Printdlg.PrintableAreaHeight);
 

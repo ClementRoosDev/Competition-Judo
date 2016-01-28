@@ -32,7 +32,7 @@ namespace CompetitionJudo.UI.ViewModel
 
         public void CalculeClassement()
         {
-            var listClub = listeCompetiteurs.Where(c => c.Resultat != 0 || c.Resultat!=null).GroupBy(c => c.Club).Select(f => new { Club = f.Key, Moyenne = f.Average(g => g.Resultat), NombreEngages = f.Count() });
+            var listClub = listeCompetiteurs.Where(c => c.Resultat != 0 || c.Resultat != null).GroupBy(c => c.Club).Select(f => new { Club = f.Key, Moyenne = f.Average(g => g.Resultat), NombreEngages = f.Count() }).Where(c=>c.Moyenne!=null); ;
             listClub = listClub.OrderBy(c => c.Moyenne);
 
             int placeFinale = 1;

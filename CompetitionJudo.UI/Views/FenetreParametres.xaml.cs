@@ -34,8 +34,6 @@ namespace CompetitionJudo.UI
                                 int nbJudokasParPoule)
         {
             InitializeComponent();
-
-            InitializeComponent();
             VM = new FenetreParametresViewModel(actionUpdateTempsCombats, actionUpdateNbJudokas,nbJudokasParPoule,tempsCombat,tempsImmo);
             this.DataContext = VM;
 
@@ -53,6 +51,8 @@ namespace CompetitionJudo.UI
             {
                 tempsImmoDict.Add(item.Key, item.Value.TimeSinceLastEvent);
             }
+
+            ListeCategories.SelectedIndex = 0;
 
             switch (VM.NbJudokasParPoule)  
             {

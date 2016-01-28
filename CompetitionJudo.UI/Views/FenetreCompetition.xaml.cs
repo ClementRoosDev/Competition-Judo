@@ -13,6 +13,7 @@ using CompetitionJudo.Data.Donnees;
 using CompetitionJudo.Data;
 using CompetitionJudo.UI.ViewModel;
 using CompetitionJudo.Business.Serialisation;
+using System.Threading.Tasks;
 
 namespace CompetitionJudo.UI
 {

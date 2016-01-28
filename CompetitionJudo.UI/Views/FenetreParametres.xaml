@@ -31,7 +31,7 @@
             </Grid.RowDefinitions>
 
             <Label Content="Nombre de Judokas par poule" Grid.Column="0" Grid.Row="0"/>
-            <ComboBox Grid.Row="1" Grid.Column="0" Name="ListeCategories" ItemsSource="{Binding ListeCategories}" SelectionChanged="ListeCategories_SelectionChanged" HorizontalAlignment="Left" Width="120" />
+            <ComboBox Grid.Row="1" Grid.Column="0" Name="ListeCategories" ItemsSource="{Binding ListeCategories}" SelectionChanged="ListeCategories_SelectionChanged"  HorizontalAlignment="Left" Width="120" />
             <Label Content="Temps combat" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2"/>
             <Label Content="Temps d'immobilisation (Ippon)" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2"/>
             <ComboBox Grid.Row="0" Grid.Column="1" Name="ListeNombreJudokasParPoule" SelectedValuePath="Content" HorizontalAlignment="Left"  Width="50" >

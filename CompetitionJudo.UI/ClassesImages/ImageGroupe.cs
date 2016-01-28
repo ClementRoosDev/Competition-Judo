@@ -15,7 +15,7 @@ namespace CompetitionJudo.UI
     public class ImageGroupe
     {
 
-        Groupe groupe;
+        public Groupe groupe {get; set; }
         public Image imageGroupe;
         public Graphics g;
         Font drawFont = new Font("Arial", 16);

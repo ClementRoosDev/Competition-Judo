@@ -336,7 +336,9 @@ namespace CompetitionJudo.UI.ViewModel
                     listeCategorie.AddRange(ListeCategories);
                 }
                 var result = Donnee.ListeCompetiteurs.Where(c => listeCategorie.Contains(c.Categorie) && listeSexe.Contains(c.Sexe) && listePresence.Contains(c.Presence));
-                return new ObservableCollection<Competiteur>(result);
+                OnPropertyChanged("StatsCompetiteursInscrits");
+                OnPropertyChanged("StatsCompetiteursPresents");
+                return new ObservableCollection<Competiteur>(result);                
             }
             set
             {
@@ -610,11 +612,20 @@ namespace CompetitionJudo.UI.ViewModel
                 {
                     var groupeTemp = new Groupe() { MaxCompetiteursParPoule = Donnee.NombreParPoule, id = groupe };
 
+                    
+
+
                     groupeTemp.Competiteurs.AddRange(Donnee.ListeCompetiteurs.Where(c => c.Poule == groupe && c.PourImpression));
+
+                    groupeTemp.Categorie = ListeCategories.First(c => c == groupeTemp.Competiteurs.First().Categorie);
+                    groupeTemp.TempsCombat = Donnee.TempsCombat.ToDictionary().First(k => k.Key == groupeTemp.Categorie).Value;
+                    groupeTemp.TempsImmo = Donnee.TempsImmo.ToDictionary().First(k => k.Key == groupeTemp.Categorie).Value;
+
+
                     lesGroupes.Add(groupeTemp);
                 }
                 if (!lesGroupes.Any(g => !g.EstValide))
-                {
+                {         
                     var fenetreImpression = new FenetreImpression(lesGroupes, Donnee.NomCompetition, Donnee.DateCompetition);
                     fenetreImpression.ShowDialog();
                 }

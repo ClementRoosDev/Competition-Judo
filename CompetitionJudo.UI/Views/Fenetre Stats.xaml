@@ -1,33 +1,30 @@
 ﻿<Window x:Class="CompetitionJudo.UI.Fenetre_Stats"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Stats" Height="360" Width="500"
+        Title="Stats" VerticalAlignment="Stretch" Width="500"
         Background="#FFA8A8A8" 
         FontFamily="Segoe UI Light" 
         FontSize="14" >
-    <GroupBox Header="Résultats" Margin="5,5,5,5" >
-        <StackPanel Orientation="Vertical">
-            <ContentControl MaxHeight="240" >
-                <DataGrid Name="GrilleResultats"  Margin="5,5,5,5" ItemsSource="{Binding ResultatClubs}" CanUserAddRows="False" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserSortColumns="True">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Résultat"  Width="1.2*"  Binding="{Binding Place}" />
-            <DataGridTextColumn Header="Club"  Width="2*"  Binding="{Binding Club}" />
-            <DataGridTextColumn Header="Moyenne résultats"  Width="2.5*"  Binding="{Binding PlaceMoyenne}" />
-            <DataGridTextColumn Header="Nombre d'engagés"  Width="3*"  Binding="{Binding NombreEngages}" />
-        </DataGrid.Columns>
-    </DataGrid>
-            </ContentControl>
-
+    <GroupBox Header="Résultats" Margin="5,5,5,5" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <DataGrid Name="GrilleResultats"  Margin="5,5,5,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding ResultatClubs}" CanUserAddRows="False" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserSortColumns="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Résultat"  Width="1.2*"  Binding="{Binding Place}" />
+                    <DataGridTextColumn Header="Club"  Width="2*"  Binding="{Binding Club}" />
+                    <DataGridTextColumn Header="Moyenne résultats"  Width="2.5*"  Binding="{Binding PlaceMoyenne}" />
+                    <DataGridTextColumn Header="Nombre d'engagés"  Width="3*"  Binding="{Binding NombreEngages}" />
+                </DataGrid.Columns>
+            </DataGrid>
             <StackPanel Orientation="Horizontal">
                 <Button Name="ButtonImprimerStats" HorizontalAlignment="Right" Width="100" Margin="10,0" Height="35" Click="ButtonImprimerStats_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <Image  Source="Resources\Imprimer.png" Width="25" Height="25" Margin="5,0"/>
+                        <Image  Source="/Resources/Imprimer.png" Width="25" Height="25" Margin="5,0"/>
                         <TextBlock Text="Imprimer" VerticalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Name="ButtonAnnuler" HorizontalAlignment="Right" Width="100" Margin="10,0" Height="35" Click="ButtonAnnuler_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image  Source="Resources\Supprimer2.png" Width="25" Height="25" Margin="5,0"/>
+                        <Image  Source="/Resources/Supprimer2.png" Width="25" Height="25" Margin="5,0"/>
                         <TextBlock Text="Annuler" VerticalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Button>

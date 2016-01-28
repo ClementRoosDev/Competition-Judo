@@ -10,6 +10,10 @@ namespace CompetitionJudo.Data
         public int MaxCompetiteursParPoule;
         private bool estValide;
 
+        public Categories Categorie { get; set; }
+        public TimeSpan2 TempsCombat { get; set; }
+        public TimeSpan2 TempsImmo { get; set; }
+
         public bool EstValide
         {
             get
@@ -23,10 +27,11 @@ namespace CompetitionJudo.Data
             }
         }
 
-        public List<Competiteur> Competiteurs { get; set;}
-        public int id {get;set;}
-        // Poule : Type groupe  = 0 : Tableau, type groupe = 1  : poule
+        public List<Competiteur> Competiteurs { get; set; }
+        public int id { get; set; }
+        // Poule : Type groupe  = 0 : Tableau, type groupe = 1  : poule        
         public TypeGroupe typeGroupe;
+
         public Groupe()
         {
             Competiteurs = new List<Competiteur>();

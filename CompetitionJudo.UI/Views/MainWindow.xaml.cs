@@ -66,8 +66,9 @@ namespace CompetitionJudo.UI
                 var result = await Task.Run(() => d.ReadFile(dialog.FileName));
 
                 var fenetreCompetition = new FenetreCompetition(result);
-                fenetreCompetition.Show();
 
+
+                fenetreCompetition.Show();
                 Close();
             }
         }

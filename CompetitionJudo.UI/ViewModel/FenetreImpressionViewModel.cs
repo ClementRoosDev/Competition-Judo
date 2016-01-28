@@ -12,8 +12,8 @@ namespace CompetitionJudo.UI.ViewModel
         public string NomCompetition { get; set; }
         public DateTime DateCompetition { get; set; }
         public List<Groupe> LesGroupes { get; set; }
-        public int elementsAImprimer { get; set; }
-
+        public int ElementsAImprimer { get; set; }
+        
         public FenetreImpressionViewModel()
         {
             
