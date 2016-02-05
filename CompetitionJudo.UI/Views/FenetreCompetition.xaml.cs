@@ -31,8 +31,6 @@ namespace CompetitionJudo.UI
             FiltreColonneSexe.ItemsSource = VM.ListeSexes;
             FiltreColonneEstPrésent.ItemsSource = VM.ListePresence;
             FiltreColonneCategorie.ItemsSource = VM.ListeCategories;
-
-
         }
         #endregion
 
@@ -68,20 +66,6 @@ namespace CompetitionJudo.UI
             }
         }
 
-        //Test Input poule
-        private void textePoule_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
-        {
-            foreach (char c in e.Text)
-            {
-                if (!Char.IsDigit(c))
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-        #endregion
-
-        #region Focus sur les liste club et categories
         private void listeClub_GotFocus(object sender, RoutedEventArgs e)
         {
             var tb = (ComboBox)sender;
@@ -116,13 +100,15 @@ namespace CompetitionJudo.UI
 
         #region Methods
 
+        //Supprimer Competiteur
         private void boutonSupprimerCompetiteur_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult rsltMessageBox = MessageBox.Show("Supprimer un compétiteur ?", "", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            Competiteur c = (Competiteur)grilleCompetiteurs.SelectedItem;
+            MessageBoxResult rsltMessageBox = MessageBox.Show(string.Format("Supprimer un compétiteur ? {0}{1} {2}",Environment.NewLine,c.Prenom,c.Nom), "", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
-            if (rsltMessageBox == MessageBoxResult.Yes)
+            if (rsltMessageBox == MessageBoxResult.Yes && c!=null)
             {
-                Competiteur c = (Competiteur)grilleCompetiteurs.SelectedItem;
+                c = (Competiteur)grilleCompetiteurs.SelectedItem;
                 VM.SupprimerCompetiteur(c);
             }
         }
@@ -144,7 +130,7 @@ namespace CompetitionJudo.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur Chargement :" + ex, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur Chargement : \r\n" + ex, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -194,11 +180,8 @@ namespace CompetitionJudo.UI
 
             FenetreParametres fen = new FenetreParametres(actionUpdateTempsCombats, actionUpdateNbJudokas, VM.Donnee.TempsCombat, VM.Donnee.TempsImmo, VM.Donnee.NombreParPoule);
             fen.ShowDialog();
-
         }
 
         #endregion
-
-
     }
 }

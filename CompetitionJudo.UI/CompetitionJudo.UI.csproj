@@ -58,7 +58,7 @@
     </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logoJCV1.ico</ApplicationIcon>
+    <ApplicationIcon>logoJCV2Ico.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -293,10 +293,10 @@
     <Resource Include="Resources\down.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logoJCV1.ico" />
+    <Resource Include="Resources\process.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\process.png" />
+    <Resource Include="logoJCV2Ico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

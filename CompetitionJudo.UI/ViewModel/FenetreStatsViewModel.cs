@@ -10,16 +10,16 @@ namespace CompetitionJudo.UI.ViewModel
     public class FenetreStatsViewModel : BaseViewModel
     {
         private List<Competiteur> listeCompetiteurs;
-        private List<ResultatCompetition> resultatClubs;
+        private List<ResultatCompetition> resultatCompetition;
 
         public List<ResultatCompetition> ResultatClubs {
             get
             {
-                return resultatClubs;
+                return resultatCompetition;
             }
             set
             {
-                resultatClubs = value;
+                resultatCompetition = value;
                 OnPropertyChanged("ResultatClubs");
             }
         }

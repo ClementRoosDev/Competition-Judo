@@ -27,13 +27,10 @@ namespace CompetitionJudo.UI
         public Fenetre_Stats(List<Competiteur> listeCompetiteurs)
         {
             InitializeComponent();
-            FenetreStatsViewModel VM = new FenetreStatsViewModel(listeCompetiteurs);
+            VM = new FenetreStatsViewModel(listeCompetiteurs);
             this.DataContext = VM;
-            VM.CalculeClassement();
-            
+            VM.CalculeClassement();            
         }
-
-
 
         private void ButtonImprimerStats_Click(object sender, RoutedEventArgs e)
         {
@@ -43,7 +40,6 @@ namespace CompetitionJudo.UI
                 if (Printdlg.ShowDialog().GetValueOrDefault())
                 {
                     Size pageSize = new Size(Printdlg.PrintableAreaWidth, Printdlg.PrintableAreaHeight);
-
                     GrilleResultats.Measure(pageSize);
                     GrilleResultats.Arrange(new Rect(10, 10, pageSize.Width, pageSize.Height));
                     Printdlg.PrintVisual(GrilleResultats, Title);

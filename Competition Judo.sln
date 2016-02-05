@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionJudo.Business", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionJudo.Data", "CompetitionJudo.Data\CompetitionJudo.Data.csproj", "{A7667256-4278-46AE-A495-F4118E27F99F}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CompetitionJudo.Setup", "CompetitionJudo.Setup\CompetitionJudo.Setup.vdproj", "{3E09F3A0-D200-4139-9ECF-87E3794BDCCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{A7667256-4278-46AE-A495-F4118E27F99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7667256-4278-46AE-A495-F4118E27F99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7667256-4278-46AE-A495-F4118E27F99F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E09F3A0-D200-4139-9ECF-87E3794BDCCA}.Debug|Any CPU.ActiveCfg = Debug
+		{3E09F3A0-D200-4139-9ECF-87E3794BDCCA}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
