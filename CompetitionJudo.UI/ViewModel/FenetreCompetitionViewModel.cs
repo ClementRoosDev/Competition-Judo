@@ -610,10 +610,7 @@ namespace CompetitionJudo.UI.ViewModel
 
                 foreach (var groupe in listegroupes)
                 {
-                    var groupeTemp = new Groupe() { MaxCompetiteursParPoule = Donnee.NombreParPoule, id = groupe };
-
-                    
-
+                    var groupeTemp = new Groupe() { MaxCompetiteursParPoule = Donnee.NombreParPoule, id = groupe };  
 
                     groupeTemp.Competiteurs.AddRange(Donnee.ListeCompetiteurs.Where(c => c.Poule == groupe && c.PourImpression));
 

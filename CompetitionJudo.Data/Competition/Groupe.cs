@@ -29,7 +29,7 @@ namespace CompetitionJudo.Data
 
         public List<Competiteur> Competiteurs { get; set; }
         public int id { get; set; }
-        // Poule : Type groupe  = 0 : Tableau, type groupe = 1  : poule        
+            
         public TypeGroupe typeGroupe;
 
         public Groupe()
@@ -38,6 +38,7 @@ namespace CompetitionJudo.Data
             typeGroupe = TypeGroupe.Poule;
 
         }
+
         public override string ToString()
         {
             return id.ToString();

@@ -15,38 +15,8 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_13B47F3D8F5C954690A649056B82B05F"
-        "OwnerKey" = "8:_71C130524AC944D9AD08B4D11A2885F3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_20D195835C84731D8F6341725F79DB7C"
-        "OwnerKey" = "8:_B7F3A1456F87400271AB0A31F7767F15"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_20D195835C84731D8F6341725F79DB7C"
-        "OwnerKey" = "8:_71C130524AC944D9AD08B4D11A2885F3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_37A30050184340F4A99ABF50FBE89456"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_63ED15E5DC8A1A5E5FECF74B45AF54C9"
-        "OwnerKey" = "8:_13B47F3D8F5C954690A649056B82B05F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_63ED15E5DC8A1A5E5FECF74B45AF54C9"
-        "OwnerKey" = "8:_71C130524AC944D9AD08B4D11A2885F3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,13 +27,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B7F3A1456F87400271AB0A31F7767F15"
-        "OwnerKey" = "8:_13B47F3D8F5C954690A649056B82B05F"
+        "MsmKey" = "8:_85ECFF7A1442D824BF664CD1D149042E"
+        "OwnerKey" = "8:_E6225A26106B0B19DC7172541132EA4A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B7F3A1456F87400271AB0A31F7767F15"
+        "MsmKey" = "8:_85ECFF7A1442D824BF664CD1D149042E"
+        "OwnerKey" = "8:_71C130524AC944D9AD08B4D11A2885F3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_90EC7112292AE5BB4BB4FF555BF5CA9E"
         "OwnerKey" = "8:_71C130524AC944D9AD08B4D11A2885F3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -75,7 +51,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D2DCEC8944E46E7F04E786452088765B"
+        "MsmKey" = "8:_E6225A26106B0B19DC7172541132EA4A"
+        "OwnerKey" = "8:_71C130524AC944D9AD08B4D11A2885F3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ECCFCF8EBD6CF41CF87AA0B5B1B13E8B"
+        "OwnerKey" = "8:_E6225A26106B0B19DC7172541132EA4A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ECCFCF8EBD6CF41CF87AA0B5B1B13E8B"
+        "OwnerKey" = "8:_71C130524AC944D9AD08B4D11A2885F3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F0F7C6404AC21AF48002F0CF24522950"
+        "OwnerKey" = "8:_ECCFCF8EBD6CF41CF87AA0B5B1B13E8B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F0F7C6404AC21AF48002F0CF24522950"
         "OwnerKey" = "8:_71C130524AC944D9AD08B4D11A2885F3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -88,31 +88,31 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_13B47F3D8F5C954690A649056B82B05F"
+        "OwnerKey" = "8:_E6225A26106B0B19DC7172541132EA4A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_63ED15E5DC8A1A5E5FECF74B45AF54C9"
+        "OwnerKey" = "8:_85ECFF7A1442D824BF664CD1D149042E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B7F3A1456F87400271AB0A31F7767F15"
+        "OwnerKey" = "8:_ECCFCF8EBD6CF41CF87AA0B5B1B13E8B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_20D195835C84731D8F6341725F79DB7C"
+        "OwnerKey" = "8:_F0F7C6404AC21AF48002F0CF24522950"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D2DCEC8944E46E7F04E786452088765B"
+        "OwnerKey" = "8:_90EC7112292AE5BB4BB4FF555BF5CA9E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -172,6 +172,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
     }
@@ -202,68 +210,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_13B47F3D8F5C954690A649056B82B05F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CompetitionJudo.Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_13B47F3D8F5C954690A649056B82B05F"
-                    {
-                    "Name" = "8:CompetitionJudo.Business.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:CompetitionJudo.Business.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1D369AFD966440A997802788CC14A2C4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_20D195835C84731D8F6341725F79DB7C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_20D195835C84731D8F6341725F79DB7C"
-                    {
-                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1D369AFD966440A997802788CC14A2C4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_37A30050184340F4A99ABF50FBE89456"
             {
             "SourcePath" = "8:D:\\Application Judo\\Icones\\logoJCV2Ico.ico"
@@ -284,14 +230,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_63ED15E5DC8A1A5E5FECF74B45AF54C9"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_85ECFF7A1442D824BF664CD1D149042E"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:CompetitionJudo.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_63ED15E5DC8A1A5E5FECF74B45AF54C9"
+                    "_85ECFF7A1442D824BF664CD1D149042E"
                     {
                     "Name" = "8:CompetitionJudo.Data.dll"
                     "Attributes" = "3:512"
@@ -315,20 +261,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B7F3A1456F87400271AB0A31F7767F15"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_90EC7112292AE5BB4BB4FF555BF5CA9E"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:System.Windows, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_B7F3A1456F87400271AB0A31F7767F15"
+                    "_90EC7112292AE5BB4BB4FF555BF5CA9E"
                     {
-                    "Name" = "8:Excel.dll"
+                    "Name" = "8:System.Windows.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Excel.dll"
+            "SourcePath" = "8:System.Windows.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1D369AFD966440A997802788CC14A2C4"
@@ -366,20 +312,82 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D2DCEC8944E46E7F04E786452088765B"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E6225A26106B0B19DC7172541132EA4A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Windows, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:CompetitionJudo.Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D2DCEC8944E46E7F04E786452088765B"
+                    "_E6225A26106B0B19DC7172541132EA4A"
                     {
-                    "Name" = "8:System.Windows.dll"
+                    "Name" = "8:CompetitionJudo.Business.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.Windows.dll"
+            "SourcePath" = "8:CompetitionJudo.Business.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1D369AFD966440A997802788CC14A2C4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ECCFCF8EBD6CF41CF87AA0B5B1B13E8B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_ECCFCF8EBD6CF41CF87AA0B5B1B13E8B"
+                    {
+                    "Name" = "8:Excel.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Excel.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1D369AFD966440A997802788CC14A2C4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F0F7C6404AC21AF48002F0CF24522950"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F0F7C6404AC21AF48002F0CF24522950"
+                    {
+                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1D369AFD966440A997802788CC14A2C4"
@@ -476,7 +484,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Competition Judo"
         "ProductCode" = "8:{23727414-8B58-4D48-B240-39F47DC5A31B}"
-        "PackageCode" = "8:{45A0BC72-6FDC-4A26-BE3B-6B06FDEA7F40}"
+        "PackageCode" = "8:{3881039B-E9D2-4408-AFE3-62CB3AC31A4A}"
         "UpgradeCode" = "8:{2633ED9C-79BF-41FE-9713-C980FD222194}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -624,7 +632,7 @@
             "Icon" = "8:_37A30050184340F4A99ABF50FBE89456"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F8A8D6855BC14CFB9372DED1B54DE09D"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D5D22655A46A4AB094801864792A5B23"
             {
             "Name" = "8:Competition Judo"
             "Arguments" = "8:"
@@ -632,9 +640,9 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_7A61CAD03703431985C6A5EE6B583178"
+            "Target" = "8:_71C130524AC944D9AD08B4D11A2885F3"
             "Folder" = "8:_308DA3A2CA53400CBF56F66621D8BEB5"
-            "WorkingFolder" = "8:_7A61CAD03703431985C6A5EE6B583178"
+            "WorkingFolder" = "8:_1D369AFD966440A997802788CC14A2C4"
             "Icon" = "8:_37A30050184340F4A99ABF50FBE89456"
             "Feature" = "8:"
             }
@@ -1075,7 +1083,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_71C130524AC944D9AD08B4D11A2885F3"
             {
-            "SourcePath" = "8:..\\CompetitionJudo.UI\\obj\\Debug\\CompetitionJudo.exe"
+            "SourcePath" = "8:..\\CompetitionJudo.UI\\obj\\Release\\CompetitionJudo.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1D369AFD966440A997802788CC14A2C4"

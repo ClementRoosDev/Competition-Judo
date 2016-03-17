@@ -13,8 +13,7 @@ namespace CompetitionJudo.Data
         {
             this.grilleCompetiteurs = grilleCompetiteurs;
             this.sourceImage = Resources.templateP2;
-            CreerCoordonnees();            
-            
+            CreerCoordonnees();    
         }
 
         public override void CreerFeuille()

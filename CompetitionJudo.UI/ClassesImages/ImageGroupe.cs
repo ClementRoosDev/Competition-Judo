@@ -15,63 +15,62 @@ namespace CompetitionJudo.UI
     public class ImageGroupe
     {
 
-        public Groupe groupe {get; set; }
+        public Groupe Groupe {get; set; }
         public Image imageGroupe;
-        public Graphics g;
+        public Graphics Graphic;
         Font drawFont = new Font("Arial", 16);
         SolidBrush drawBrush = new SolidBrush(System.Drawing.Color.Yellow);
-        public OrganisationCombat poule;
-
+        public OrganisationCombat Organisation { get; set; }
 
         public ImageGroupe(Groupe groupe)
         {
-            this.groupe = groupe;
+            this.Groupe = groupe;
 
             init();
-            //imageGroupe = System.Drawing.Image.FromFile(poule.sourceImage);
-            imageGroupe = new Bitmap(poule.sourceImage);
+
+            imageGroupe = new Bitmap(Organisation.sourceImage);
             
         }
 
         private void init()
         {
-            if (groupe.typeGroupe == TypeGroupe.Tableau)
+            if (Groupe.typeGroupe == TypeGroupe.Tableau)
             {
-                if (groupe.Competiteurs.Count <= 4)
+                if (Groupe.Competiteurs.Count <= 4)
                 {
-                    poule = new TableauDe4(groupe.Competiteurs);
+                    Organisation = new TableauDe4(Groupe.Competiteurs);
                 }
-                if (groupe.Competiteurs.Count > 4 && groupe.Competiteurs.Count <= 8)
+                if (Groupe.Competiteurs.Count > 4 && Groupe.Competiteurs.Count <= 8)
                 {
-                    poule = new TableauDe8(groupe.Competiteurs);
+                    Organisation = new TableauDe8(Groupe.Competiteurs);
                 }
-                if (groupe.Competiteurs.Count > 8 && groupe.Competiteurs.Count <= 16)
+                if (Groupe.Competiteurs.Count > 8 && Groupe.Competiteurs.Count <= 16)
                 {
-                    poule = new TableauDe16(groupe.Competiteurs);
+                    Organisation = new TableauDe16(Groupe.Competiteurs);
                 }
-                if (groupe.Competiteurs.Count > 16 && groupe.Competiteurs.Count <= 32)
+                if (Groupe.Competiteurs.Count > 16 && Groupe.Competiteurs.Count <= 32)
                 {
-                    poule = new TableauDe32(groupe.Competiteurs);
+                    Organisation = new TableauDe32(Groupe.Competiteurs);
                 }
             }
             else
             {
-                switch (groupe.Competiteurs.Count())
+                switch (Groupe.Competiteurs.Count())
                 {
                     case 2:                        
-                         poule = new PouleDe2(groupe.Competiteurs);
+                         Organisation = new PouleDe2(Groupe.Competiteurs);
                          break;
                     case 3:                        
-                        poule = new PouleDe3(groupe.Competiteurs); 
+                        Organisation = new PouleDe3(Groupe.Competiteurs); 
                         break;
                     case 4:
-                        poule = new PouleDe4(groupe.Competiteurs); 
+                        Organisation = new PouleDe4(Groupe.Competiteurs); 
                         break;
                     case 5:
-                        poule = new PouleDe5(groupe.Competiteurs); 
+                        Organisation = new PouleDe5(Groupe.Competiteurs); 
                         break;
                     case 6:
-                        poule = new PouleDe6(groupe.Competiteurs); 
+                        Organisation = new PouleDe6(Groupe.Competiteurs); 
                         break;
                 }
             }
@@ -79,7 +78,7 @@ namespace CompetitionJudo.UI
 
         private void DrawCompetiteurs()
         {
-            for (int i = 0; i < this.groupe.Competiteurs.Count(); i++)
+            for (int i = 0; i < this.Groupe.Competiteurs.Count(); i++)
             {
                 
             }

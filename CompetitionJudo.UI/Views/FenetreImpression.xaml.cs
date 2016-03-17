@@ -100,35 +100,33 @@ namespace CompetitionJudo.UI
         {
 
             Graphics g = ev.Graphics;
-
-            //var ig = new ImageGroupe(lesGroupes.ElementAt(Convert.ToInt16(ComboBoxListeGroupes.Text)-1));
+            
             var ig = new ImageGroupe(VM.LesGroupes.First(c => c.id.ToString().Equals(ComboBoxListeGroupes.Text)));
-            var poidsMin = ig.poule.grilleCompetiteurs.Min(c => c.Poids);
-            var poidsMax = ig.poule.grilleCompetiteurs.Max(c => c.Poids);
+            var poidsMin = ig.Organisation.grilleCompetiteurs.Min(c => c.Poids);
+            var poidsMax = ig.Organisation.grilleCompetiteurs.Max(c => c.Poids);
 
             System.Drawing.Point ulCorner = new System.Drawing.Point(1, 1);
             g.DrawImage(ig.imageGroupe, ulCorner);
 
-            g.DrawString(string.Format("{0} - {1}", VM.NomCompetition.ToString(), String.Format("{0:d MMMM yyyy}", VM.DateCompetition)), drawFont, drawBrush, new PointF(320, 20));
+            g.DrawString(string.Format("{0} - {1}", VM.NomCompetition.ToString(), String.Format("{0:d MMMM yyyy}", VM.DateCompetition)), drawFont, drawBrush,ig.Organisation.CoordonneesNomCompetition );
+            
+            g.DrawString(string.Format("{0} : poule n°{1} de {2}kg à {3}kg", ig.Groupe.Categorie, ig.Organisation.grilleCompetiteurs[0].Poule.ToString(), poidsMin, poidsMax), drawFont, drawBrush, ig.Organisation.CoordonneesPoidsGroupe );
+
+            g.DrawString(string.Format("Temps Combat : {0}m{1}s", ig.Groupe.TempsCombat.TimeSinceLastEvent.Minutes, ig.Groupe.TempsCombat.TimeSinceLastEvent.Seconds), drawFont, drawBrush, ig.Organisation.CoordonneesTempsCombat );
+
+            g.DrawString(string.Format("Temps Immobilisation Ippon : {0}s",  ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds), drawFont, drawBrush, ig.Organisation.CoordonneesTempsImmobilisation);
+            //g.DrawString(string.Format("Temps Immobilisation Waza Ari : {0}s", ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds-5), drawFont, drawBrush, ig.Organisation.CoordonneesTempsImmobilisation -20 );
+            //g.DrawString(string.Format("Temps Immobilisation Yuko : {0}s", ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds - 10), drawFont, drawBrush, ig.Organisation.CoordonneesTempsImmobilisation -20);
 
 
-            g.DrawString(string.Format("{0} : poule n°{1} de {2}kg à {3}kg", ig.groupe.Categorie, ig.poule.grilleCompetiteurs[0].Poule.ToString(), poidsMin, poidsMax), drawFont, drawBrush, new PointF(320, 40));
-
-            g.DrawString(string.Format("Temps Combat : {0}m{1}s", ig.groupe.TempsCombat.TimeSinceLastEvent.Minutes, ig.groupe.TempsCombat.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 80));
-
-            g.DrawString(string.Format("Temps Immobilisation Ippon : {0}s",  ig.groupe.TempsImmo.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 100));
-            g.DrawString(string.Format("Temps Immobilisation Waza Ari : {0}s", ig.groupe.TempsImmo.TimeSinceLastEvent.Seconds-5), drawFont, drawBrush, new PointF(20, 120));
-            g.DrawString(string.Format("Temps Immobilisation Yuko : {0}s", ig.groupe.TempsImmo.TimeSinceLastEvent.Seconds - 10), drawFont, drawBrush, new PointF(20, 140));
-
-
-            for (int i = 0; i < ig.poule.grilleCompetiteurs.Count; i++)
+            for (int i = 0; i < ig.Organisation.grilleCompetiteurs.Count; i++)
             {
-                var cdn = ig.poule.listeCoordonneesNom[i];
-                g.DrawString(ig.poule.grilleCompetiteurs[i].Nom, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
-                cdn = ig.poule.listeCoordonneesPrenom[i];
-                g.DrawString(ig.poule.grilleCompetiteurs[i].Prenom, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
-                cdn = ig.poule.listeCoordonneesClub[i];
-                g.DrawString(ig.poule.grilleCompetiteurs[i].Club, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
+                var cdn = ig.Organisation.listeCoordonneesNom[i];
+                g.DrawString(ig.Organisation.grilleCompetiteurs[i].Nom, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
+                cdn = ig.Organisation.listeCoordonneesPrenom[i];
+                g.DrawString(ig.Organisation.grilleCompetiteurs[i].Prenom, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
+                cdn = ig.Organisation.listeCoordonneesClub[i];
+                g.DrawString(ig.Organisation.grilleCompetiteurs[i].Club, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
             }
         }
 
@@ -141,8 +139,8 @@ namespace CompetitionJudo.UI
 
 
             var ig = new ImageGroupe(VM.LesGroupes.ElementAt(VM.LesGroupes.Count() - VM.ElementsAImprimer));
-            var poidsMinG1 = ig.poule.grilleCompetiteurs.Min(c => c.Poids);
-            var poidsMaxG1 = ig.poule.grilleCompetiteurs.Max(c => c.Poids);
+            var poidsMinG1 = ig.Organisation.grilleCompetiteurs.Min(c => c.Poids);
+            var poidsMaxG1 = ig.Organisation.grilleCompetiteurs.Max(c => c.Poids);
 
             System.Drawing.Point ulCorner = new System.Drawing.Point(1, 1);
             g.DrawImage(ig.imageGroupe, ulCorner);
@@ -152,29 +150,29 @@ namespace CompetitionJudo.UI
             g.DrawString(string.Format("{0} - {1}", VM.NomCompetition.ToString(), String.Format("{0:d MMMM yyyy}", VM.DateCompetition)), drawFont, drawBrush, new PointF(320, 20));
 
 
-            g.DrawString(string.Format("{0} : poule n°{1} de {2}kg à {3}kg", ig.groupe.Categorie, ig.poule.grilleCompetiteurs[0].Poule.ToString(), poidsMinG1, poidsMaxG1), drawFont, drawBrush, new PointF(320, 40));
+            g.DrawString(string.Format("{0} : poule n°{1} de {2}kg à {3}kg", ig.Groupe.Categorie, ig.Organisation.grilleCompetiteurs[0].Poule.ToString(), poidsMinG1, poidsMaxG1), drawFont, drawBrush, new PointF(320, 40));
 
-            g.DrawString(string.Format("Temps Combat : {0}m{1}s", ig.groupe.TempsCombat.TimeSinceLastEvent.Minutes, ig.groupe.TempsCombat.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 80));
+            g.DrawString(string.Format("Temps Combat : {0}m{1}s", ig.Groupe.TempsCombat.TimeSinceLastEvent.Minutes, ig.Groupe.TempsCombat.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 80));
 
-            g.DrawString(string.Format("Temps Immobilisation Ippon : {0}s", ig.groupe.TempsImmo.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 100));
-            g.DrawString(string.Format("Temps Immobilisation Waza ari : {0}s", ig.groupe.TempsImmo.TimeSinceLastEvent.Seconds-5), drawFont, drawBrush, new PointF(20, 120));
-            g.DrawString(string.Format("Temps Immobilisation Yuko : {0}s", ig.groupe.TempsImmo.TimeSinceLastEvent.Seconds - 10), drawFont, drawBrush, new PointF(20, 140));
+            g.DrawString(string.Format("Temps Immobilisation Ippon : {0}s", ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 100));
+            g.DrawString(string.Format("Temps Immobilisation Waza ari : {0}s", ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds-5), drawFont, drawBrush, new PointF(20, 120));
+            g.DrawString(string.Format("Temps Immobilisation Yuko : {0}s", ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds - 10), drawFont, drawBrush, new PointF(20, 140));
 
-            for (int i = 0; i < ig.poule.grilleCompetiteurs.Count; i++)
+            for (int i = 0; i < ig.Organisation.grilleCompetiteurs.Count; i++)
             {
-                var cdn = ig.poule.listeCoordonneesNom[i];
-                g.DrawString(ig.poule.grilleCompetiteurs[i].Nom, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
-                cdn = ig.poule.listeCoordonneesPrenom[i];
-                g.DrawString(ig.poule.grilleCompetiteurs[i].Prenom, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
-                cdn = ig.poule.listeCoordonneesClub[i];
-                g.DrawString(ig.poule.grilleCompetiteurs[i].Club, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
+                var cdn = ig.Organisation.listeCoordonneesNom[i];
+                g.DrawString(ig.Organisation.grilleCompetiteurs[i].Nom, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
+                cdn = ig.Organisation.listeCoordonneesPrenom[i];
+                g.DrawString(ig.Organisation.grilleCompetiteurs[i].Prenom, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
+                cdn = ig.Organisation.listeCoordonneesClub[i];
+                g.DrawString(ig.Organisation.grilleCompetiteurs[i].Club, drawFont, drawBrush, new PointF(cdn.x, cdn.y));
             }
 
             if (!(VM.ElementsAImprimer == 1 && VM.LesGroupes.Count() % 2 == 1))
             {
                 var ig2 = new ImageGroupe(VM.LesGroupes.ElementAt(VM.LesGroupes.Count() - VM.ElementsAImprimer + 1));
-                var poidsMinG2 = ig2.poule.grilleCompetiteurs.Min(c => c.Poids);
-                var poidsMaxG2 = ig2.poule.grilleCompetiteurs.Max(c => c.Poids);
+                var poidsMinG2 = ig2.Organisation.grilleCompetiteurs.Min(c => c.Poids);
+                var poidsMaxG2 = ig2.Organisation.grilleCompetiteurs.Max(c => c.Poids);
 
                 var ulCorner2 = new System.Drawing.Point(1, 585);
                 g.DrawImage(ig2.imageGroupe, ulCorner2);
@@ -182,22 +180,22 @@ namespace CompetitionJudo.UI
                 g.DrawString(string.Format("{0} - {1}", VM.NomCompetition.ToString(), String.Format("{0:d MMMM yyyy}", VM.DateCompetition)), drawFont, drawBrush, new PointF(320, 20 + 585));
 
 
-                g.DrawString(string.Format("{0} : poule n°{1} de {2}kg à {3}kg", ig2.groupe.Categorie, ig2.poule.grilleCompetiteurs[0].Poule.ToString(), poidsMinG2, poidsMaxG2), drawFont, drawBrush, new PointF(320, 40+585));
+                g.DrawString(string.Format("{0} : poule n°{1} de {2}kg à {3}kg", ig2.Groupe.Categorie, ig2.Organisation.grilleCompetiteurs[0].Poule.ToString(), poidsMinG2, poidsMaxG2), drawFont, drawBrush, new PointF(320, 40+585));
 
-                g.DrawString(string.Format("Temps Combat : {0}m{1}s", ig2.groupe.TempsCombat.TimeSinceLastEvent.Minutes, ig2.groupe.TempsCombat.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 80+585));
+                g.DrawString(string.Format("Temps Combat : {0}m{1}s", ig2.Groupe.TempsCombat.TimeSinceLastEvent.Minutes, ig2.Groupe.TempsCombat.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 80+585));
 
-                g.DrawString(string.Format("Temps Immobilisation Ippon : {0}s",  ig2.groupe.TempsImmo.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 100+585));
-                g.DrawString(string.Format("Temps Immobilisation Waza Ari : {0}s", ig2.groupe.TempsImmo.TimeSinceLastEvent.Seconds-5), drawFont, drawBrush, new PointF(20, 120 + 585));
-                g.DrawString(string.Format("Temps Immobilisation Yuko : {0}s", ig2.groupe.TempsImmo.TimeSinceLastEvent.Seconds-10), drawFont, drawBrush, new PointF(20, 140 + 585));
+                g.DrawString(string.Format("Temps Immobilisation Ippon : {0}s",  ig2.Groupe.TempsImmo.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 100+585));
+                g.DrawString(string.Format("Temps Immobilisation Waza Ari : {0}s", ig2.Groupe.TempsImmo.TimeSinceLastEvent.Seconds-5), drawFont, drawBrush, new PointF(20, 120 + 585));
+                g.DrawString(string.Format("Temps Immobilisation Yuko : {0}s", ig2.Groupe.TempsImmo.TimeSinceLastEvent.Seconds-10), drawFont, drawBrush, new PointF(20, 140 + 585));
                 
-                for (int i = 0; i < ig2.poule.grilleCompetiteurs.Count; i++)
+                for (int i = 0; i < ig2.Organisation.grilleCompetiteurs.Count; i++)
                 {
-                    var cdn = ig2.poule.listeCoordonneesNom[i];
-                    g.DrawString(ig2.poule.grilleCompetiteurs[i].Nom, drawFont, drawBrush, new PointF(cdn.x, cdn.y + 585));
-                    cdn = ig2.poule.listeCoordonneesPrenom[i];
-                    g.DrawString(ig2.poule.grilleCompetiteurs[i].Prenom, drawFont, drawBrush, new PointF(cdn.x, cdn.y + 585));
-                    cdn = ig2.poule.listeCoordonneesClub[i];
-                    g.DrawString(ig2.poule.grilleCompetiteurs[i].Club, drawFont, drawBrush, new PointF(cdn.x, cdn.y + 585));
+                    var cdn = ig2.Organisation.listeCoordonneesNom[i];
+                    g.DrawString(ig2.Organisation.grilleCompetiteurs[i].Nom, drawFont, drawBrush, new PointF(cdn.x, cdn.y + 585));
+                    cdn = ig2.Organisation.listeCoordonneesPrenom[i];
+                    g.DrawString(ig2.Organisation.grilleCompetiteurs[i].Prenom, drawFont, drawBrush, new PointF(cdn.x, cdn.y + 585));
+                    cdn = ig2.Organisation.listeCoordonneesClub[i];
+                    g.DrawString(ig2.Organisation.grilleCompetiteurs[i].Club, drawFont, drawBrush, new PointF(cdn.x, cdn.y + 585));
                 }
             }
 

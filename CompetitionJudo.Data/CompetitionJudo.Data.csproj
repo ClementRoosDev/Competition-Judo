@@ -49,7 +49,7 @@
     <Compile Include="Competition\Coordonnee.cs" />
     <Compile Include="Competition\Groupe.cs" />
     <Compile Include="Competition\NewDictionary.cs" />
-    <Compile Include="Competition\OrganisationCombat.cs" />
+    <Compile Include="Groupes\OrganisationCombat.cs" />
     <Compile Include="Competition\Presence.cs" />
     <Compile Include="Competition\ResultatCompetition.cs" />
     <Compile Include="Competition\TimeSpan2.cs" />

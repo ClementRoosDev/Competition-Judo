@@ -18,7 +18,12 @@ namespace CompetitionJudo.Data
         public List<Coordonnee> listeCoordonneesPrenom { get; set; }
         public List<Coordonnee> listeCoordonneesClub { get; set; }  
 
-     
+        public PointF CoordonneesNomCompetition { get; set; }
+        public PointF CoordonneesPoidsGroupe { get; set; }
+        public PointF CoordonneesTempsCombat { get; set; }
+        public PointF CoordonneesTempsImmobilisation { get; set; }
+
+
         public abstract void CreerFeuille();
 
         //Créer les coordonnées des nom+prenom+clubs qui seront affichés sur les feuilles imprimées
