@@ -14,6 +14,7 @@ namespace CompetitionJudo.Data
     {
         Tous,
         M,
-        F
+        F,
+        Mixte
     }
 }

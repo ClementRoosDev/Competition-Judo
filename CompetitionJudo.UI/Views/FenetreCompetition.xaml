@@ -14,7 +14,8 @@
     >
 
     <Window.Resources>
-        <local:ColorationColonnes x:Key="ColorationColonnes"/>
+        <local:ColorationColonnesCompetiteurs x:Key="ColorationColonnesCompetiteurs"/>
+        <local:ColorationColonnesGroupes x:Key="ColorationColonnesGroupes"/>
     </Window.Resources>
 
     <DockPanel >
@@ -147,82 +148,127 @@
             </GroupBox>
 
         </StackPanel>
+        <Grid  Margin="5,5,5,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"  />
+                <RowDefinition Height="3"  />
+                <RowDefinition Height="*"  />
+            </Grid.RowDefinitions>
 
-        <GroupBox Header="Groupes" Margin="5,5,5,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Right">
-            <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <DataGrid IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs }" Margin="5,5,5,5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True" CanUserSortColumns="True" >
-                    <DataGrid.RowStyle>
-                        <Style TargetType="DataGridRow">
-                            <Setter Property="Background" Value="{Binding Converter={StaticResource ColorationColonnes}}"/>
-                        </Style>
-                    </DataGrid.RowStyle>
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Binding="{Binding EstPresent}">
-                            <DataGridCheckBoxColumn.Header>
-                                <StackPanel Orientation="Horizontal" >
-                                    <ComboBox Name="FiltreColonneEstPrésent" SelectionChanged="FiltresGrille_SelectionChanged" IsSynchronizedWithCurrentItem="True" IsReadOnly="True" IsEditable="False" HorizontalAlignment="Right"/>
-                                </StackPanel>
-                            </DataGridCheckBoxColumn.Header>
-                        </DataGridCheckBoxColumn>
+            <GroupBox Header="Groupes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Right" Grid.Row="0">
+                <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <DataGrid IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs }" Margin="5,5,5,5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True" CanUserSortColumns="True" >
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Background" Value="{Binding Converter={StaticResource ColorationColonnesCompetiteurs}}"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn Binding="{Binding EstPresent}">
+                                <DataGridCheckBoxColumn.Header>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <ComboBox Name="FiltreColonneEstPrésent" SelectionChanged="FiltresGrille_SelectionChanged" IsSynchronizedWithCurrentItem="True" IsReadOnly="True" IsEditable="False" HorizontalAlignment="Right"/>
+                                    </StackPanel>
+                                </DataGridCheckBoxColumn.Header>
+                            </DataGridCheckBoxColumn>
 
-                        <DataGridTextColumn Header="Poule" Binding="{Binding Poule}"/>
+                            <DataGridTextColumn Header="Poule" Binding="{Binding Poule}"/>
 
-                        <DataGridTextColumn Binding="{Binding Nom}" >
-                            <DataGridTextColumn.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Nom" />
-                                    <TextBox Name="FiltreColonneNom" Width="80" Margin="10,0,0,0"  TextChanged="FiltreColonnesNomPrenom_TextChanged"></TextBox>
-                                </StackPanel>
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Nom}" >
+                                <DataGridTextColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Nom" />
+                                        <TextBox Name="FiltreColonneNom" Width="80" Margin="10,0,0,0"  TextChanged="FiltreColonnesNomPrenom_TextChanged"></TextBox>
+                                    </StackPanel>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                        <DataGridTextColumn Binding="{Binding Prenom}" >
-                            <DataGridTextColumn.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Prénom" />
-                                    <TextBox Name="FiltreColonnePrenom" Width="80" Margin="10,0,0,0" TextChanged="FiltreColonnesNomPrenom_TextChanged" />
-                                </StackPanel>
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Club" Width="0.5*" Binding="{Binding Club}" />
-                        <DataGridTextColumn Header="Poids" Width="0.25*"  Binding="{Binding Poids}" />
+                            <DataGridTextColumn Binding="{Binding Prenom}" >
+                                <DataGridTextColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Prénom" />
+                                        <TextBox Name="FiltreColonnePrenom" Width="80" Margin="10,0,0,0" TextChanged="FiltreColonnesNomPrenom_TextChanged" />
+                                    </StackPanel>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Club" Width="0.5*" Binding="{Binding Club}" />
+                            <DataGridTextColumn Header="Poids" Width="0.25*"  Binding="{Binding Poids}" />
 
-                        <DataGridTextColumn Binding="{Binding Sexe}" >
-                            <DataGridTextColumn.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Sexe" />
-                                    <ComboBox Name="FiltreColonneSexe" Margin="5,0"  SelectionChanged="FiltresGrille_SelectionChanged" IsSynchronizedWithCurrentItem="True" IsReadOnly="True" IsEditable="False"/>
-                                </StackPanel>
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Categorie}" >
-                            <DataGridTextColumn.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Catégorie" />
-                                    <ComboBox Name="FiltreColonneCategorie" Margin="10,0,0,0"  IsSynchronizedWithCurrentItem="True" SelectionChanged="FiltresGrille_SelectionChanged" Text="Tous" IsReadOnly="True" IsEditable="False"/>
-                                </StackPanel>
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Sexe}" >
+                                <DataGridTextColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Sexe" />
+                                        <ComboBox Name="FiltreColonneSexe" Margin="5,0"  SelectionChanged="FiltresGrille_SelectionChanged" IsSynchronizedWithCurrentItem="True" IsReadOnly="True" IsEditable="False"/>
+                                    </StackPanel>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Categorie}" >
+                                <DataGridTextColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Catégorie" />
+                                        <ComboBox Name="FiltreColonneCategorie" Margin="10,0,0,0"  IsSynchronizedWithCurrentItem="True" SelectionChanged="FiltresGrille_SelectionChanged" Text="Tous" IsReadOnly="True" IsEditable="False"/>
+                                    </StackPanel>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                        <DataGridCheckBoxColumn Binding="{Binding PourImpression}" >
-                            <DataGridCheckBoxColumn.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Imprimer" />
-                                    <CheckBox Name="CheckBoxImprimer" Margin="10,0,0,0" Click="CheckBoxImprimer_Click" />
-                                </StackPanel>
-                            </DataGridCheckBoxColumn.Header>
-                            <DataGridCheckBoxColumn.CellStyle>
-                                <Style>
-                                    <!-- <EventSetter Event="CheckBox.Checked" /> Handler="OnChecked" -->
+                            <DataGridCheckBoxColumn Binding="{Binding PourImpression}" >
+                                <DataGridCheckBoxColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Imprimer" />
+                                        <CheckBox Name="CheckBoxImprimer" Margin="10,0,0,0" Click="CheckBoxImprimer_Click" />
+                                    </StackPanel>
+                                </DataGridCheckBoxColumn.Header>
+                                <DataGridCheckBoxColumn.CellStyle>
+                                    <Style>
+                                        <!-- <EventSetter Event="CheckBox.Checked" /> Handler="OnChecked" -->
 
-                                </Style>
-                            </DataGridCheckBoxColumn.CellStyle>
-                        </DataGridCheckBoxColumn>
+                                    </Style>
+                                </DataGridCheckBoxColumn.CellStyle>
+                            </DataGridCheckBoxColumn>
 
-                        <DataGridTextColumn Header="Resultat" Binding="{Binding Resultat}" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </DockPanel>
-        </GroupBox>
+                            <DataGridTextColumn Header="Resultat" Binding="{Binding Resultat}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+            <GroupBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Right" Grid.Row="2">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Groupes"></Label>
+                        <Button Content="Refresh" Click="Button_Click"></Button>
+                    </StackPanel>
+                </GroupBox.Header>
+                <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <DataGrid Name="GrilleGroupes" IsSynchronizedWithCurrentItem="True" Margin="5,5,5,5" ItemsSource="{Binding Path=ListeGroupes}" AutoGenerateColumns="False" >
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Background" Value="{Binding Converter={StaticResource ColorationColonnesGroupes}}"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="Numero">
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding Categorie}" Header="Categorie">
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding PoidsMin}" Header="Poids Min">
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding PoidsMax}" Header="Poids max">
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding CompositionGroupe}" Header="Composition">
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding Competiteurs.Count}" Header="Nbr Competiteurs">
+                            </DataGridTextColumn>
+                            <DataGridCheckBoxColumn Binding="{Binding Competiteurs.PourImpression}" Header="Imprimer"></DataGridCheckBoxColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+        </Grid>
     </DockPanel>
 </Window>

@@ -338,12 +338,56 @@ namespace CompetitionJudo.UI.ViewModel
                 var result = Donnee.ListeCompetiteurs.Where(c => listeCategorie.Contains(c.Categorie) && listeSexe.Contains(c.Sexe) && listePresence.Contains(c.Presence));
                 OnPropertyChanged("StatsCompetiteursInscrits");
                 OnPropertyChanged("StatsCompetiteursPresents");
-                return new ObservableCollection<Competiteur>(result);                
+                OnPropertyChanged("ListeGroupes");
+                return new ObservableCollection<Competiteur>(result);
             }
             set
             {
                 Donnee.ListeCompetiteurs = value;
                 OnPropertyChanged("ListeCompetiteurs");
+                OnPropertyChanged("ListeGroupes");
+            }
+        }
+
+        public ObservableCollection<Groupe> ListeGroupes
+        {
+            get
+            {
+                List<Groupe> listeGroupe = new List<Groupe>() { new Groupe { Categorie = Categories.Benjamin} };
+
+                List<int> listegroupes = new List<int>();
+                foreach (var competiteur in Donnee.ListeCompetiteurs.Where(c => c.Poule != null))
+                {
+                    if (!listegroupes.Any(c => c == competiteur.Poule))
+                    {
+                        listegroupes.Add((int)competiteur.Poule);
+                    }
+                }
+
+                foreach (var groupe in listegroupes)
+                {
+                    var groupeTemp = new Groupe() { MaxCompetiteursParPoule = Donnee.NombreParPoule, id = groupe };
+
+                    groupeTemp.Competiteurs.AddRange(Donnee.ListeCompetiteurs.Where(c => c.Poule == groupe));
+
+                    groupeTemp.Categorie = ListeCategories.First(c => c == groupeTemp.Competiteurs.First().Categorie);
+                    groupeTemp.TempsCombat = Donnee.TempsCombat.ToDictionary().First(k => k.Key == groupeTemp.Categorie).Value;
+                    groupeTemp.TempsImmo = Donnee.TempsImmo.ToDictionary().First(k => k.Key == groupeTemp.Categorie).Value;
+
+                    if (groupeTemp.Competiteurs.Select(c=>c.Sexe).Distinct().Count()==1)
+                    {
+                        groupeTemp.CompositionGroupe = groupeTemp.Competiteurs.First().Sexe;
+                    }
+                    else
+                    {
+                        groupeTemp.CompositionGroupe = Sexes.Mixte;
+                    }
+
+
+                    listeGroupe.Add(groupeTemp);
+                }
+
+                return new ObservableCollection<Groupe>(listeGroupe);
             }
         }
 
@@ -452,7 +496,7 @@ namespace CompetitionJudo.UI.ViewModel
         }
 
         #endregion
-        
+
         private List<List<Competiteur>> listePourImpression = new List<List<Competiteur>>();
 
         #endregion
@@ -669,7 +713,7 @@ namespace CompetitionJudo.UI.ViewModel
 
                 foreach (var groupe in listegroupes)
                 {
-                    var groupeTemp = new Groupe() { MaxCompetiteursParPoule = Donnee.NombreParPoule, id = groupe };  
+                    var groupeTemp = new Groupe() { MaxCompetiteursParPoule = Donnee.NombreParPoule, id = groupe };
 
                     groupeTemp.Competiteurs.AddRange(Donnee.ListeCompetiteurs.Where(c => c.Poule == groupe && c.PourImpression));
 
@@ -680,7 +724,7 @@ namespace CompetitionJudo.UI.ViewModel
 
                     lesGroupes.Add(groupeTemp);
                 }
-                if (lesGroupes.Count>0)
+                if (lesGroupes.Count > 0)
                 {
                     if (!lesGroupes.Any(g => !g.EstValide))
                     {
@@ -705,7 +749,7 @@ namespace CompetitionJudo.UI.ViewModel
 
         #endregion
 
-        public void ModificationJudoka(int numeroPoule,bool valeurImpression)
+        public void ModificationJudoka(int numeroPoule, bool valeurImpression)
         {
             Donnee.ListeCompetiteurs.Where(c => c.Poule == numeroPoule).Select(c => { c.PourImpression = valeurImpression; return c; }).ToList();
             OnPropertyChanged("ListeCompetiteurs");

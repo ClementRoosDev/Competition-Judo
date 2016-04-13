@@ -197,6 +197,11 @@ namespace CompetitionJudo.UI
             fen.ShowDialog();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GrilleGroupes.ItemsSource = VM.ListeGroupes;
+        }
+
         #endregion
 
 
