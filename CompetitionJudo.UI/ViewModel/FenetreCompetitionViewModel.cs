@@ -378,22 +378,81 @@ namespace CompetitionJudo.UI.ViewModel
             }
         }
 
-        public int StatsCompetiteursInscrits
-        {
-            get
-            {
-                return Donnee.ListeCompetiteurs.Count;
-            }
-        }
+        #region Stats
 
         public int StatsCompetiteursPresents
         {
             get
             {
+                OnPropertyChanged("StatsMPPresents");
+                OnPropertyChanged("StatsPPresents");
+                OnPropertyChanged("StatsBPresents");
+                OnPropertyChanged("StatsMPresents");
+                OnPropertyChanged("StatsCPresents");
+                OnPropertyChanged("StatsJPresents");
+                OnPropertyChanged("StatsSPresents");
                 return Donnee.ListeCompetiteurs.Where(c => c.EstPresent).Count();
             }
         }
 
+        public int StatsMPPresents
+        {
+            get
+            {
+                return Donnee.ListeCompetiteurs.Where(c => c.EstPresent && c.Categorie == Categories.MiniPoussin).Count();
+            }
+        }
+
+        public int StatsPPresents
+        {
+            get
+            {
+                return Donnee.ListeCompetiteurs.Where(c => c.EstPresent && c.Categorie == Categories.Poussin).Count();
+            }
+        }
+
+        public int StatsBPresents
+        {
+            get
+            {
+                return Donnee.ListeCompetiteurs.Where(c => c.EstPresent && c.Categorie == Categories.Benjamin).Count();
+            }
+        }
+
+        public int StatsMPresents
+        {
+            get
+            {
+                return Donnee.ListeCompetiteurs.Where(c => c.EstPresent && c.Categorie == Categories.Minime).Count();
+            }
+        }
+
+        public int StatsCPresents
+        {
+            get
+            {
+                return Donnee.ListeCompetiteurs.Where(c => c.EstPresent && c.Categorie == Categories.Cadet).Count();
+            }
+        }
+
+        public int StatsJPresents
+        {
+            get
+            {
+                return Donnee.ListeCompetiteurs.Where(c => c.EstPresent && c.Categorie == Categories.Junior).Count();
+            }
+        }
+
+        public int StatsSPresents
+        {
+            get
+            {
+                return Donnee.ListeCompetiteurs.Where(c => c.EstPresent && c.Categorie == Categories.Senior).Count();
+            }
+        }
+
+        #endregion
+        
         private List<List<Competiteur>> listePourImpression = new List<List<Competiteur>>();
 
         #endregion
@@ -621,21 +680,35 @@ namespace CompetitionJudo.UI.ViewModel
 
                     lesGroupes.Add(groupeTemp);
                 }
-                if (!lesGroupes.Any(g => !g.EstValide))
-                {         
-                    var fenetreImpression = new FenetreImpression(lesGroupes, Donnee.NomCompetition, Donnee.DateCompetition);
-                    fenetreImpression.ShowDialog();
+                if (lesGroupes.Count>0)
+                {
+                    if (!lesGroupes.Any(g => !g.EstValide))
+                    {
+                        var fenetreImpression = new FenetreImpression(lesGroupes, Donnee.NomCompetition, Donnee.DateCompetition);
+                        fenetreImpression.ShowDialog();
+                    }
+                    else
+                    {
+                        List<int> listeGroupesNonValides = lesGroupes.Where(g => !g.EstValide).Select(g => g.id).ToList();
+                        listeGroupesNonValides.Sort();
+                        MessageBox.Show(String.Format("{0}{1}Poules n° : {2}", "Des poules ont un mauvais nombre de compétiteurs ", Environment.NewLine, string.Join(", ", listeGroupesNonValides), "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
+                    }
                 }
                 else
                 {
-                    List<int> listeGroupesNonValides = lesGroupes.Where(g => !g.EstValide).Select(g => g.id).ToList();
-                    listeGroupesNonValides.Sort();
-                    MessageBox.Show(String.Format("{0}{1}Poules n° : {2}", "Des poules ont un mauvais nombre de compétiteurs ", Environment.NewLine, string.Join(", ", listeGroupesNonValides), "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
+                    MessageBox.Show(String.Format("Aucun de groupe cochés pour l'impression", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
                 }
+
             }
 
         }
 
         #endregion
+
+        public void ModificationJudoka(int numeroPoule,bool valeurImpression)
+        {
+            Donnee.ListeCompetiteurs.Where(c => c.Poule == numeroPoule).Select(c => { c.PourImpression = valeurImpression; return c; }).ToList();
+            OnPropertyChanged("ListeCompetiteurs");
+        }
     }
 }

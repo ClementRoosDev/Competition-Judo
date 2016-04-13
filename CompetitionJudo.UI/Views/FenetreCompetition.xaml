@@ -12,7 +12,7 @@
     Height="768"
     Title="{Binding WindowTitle}"
     >
-    
+
     <Window.Resources>
         <local:ColorationColonnes x:Key="ColorationColonnes"/>
     </Window.Resources>
@@ -27,7 +27,7 @@
                         <TextBox x:Name="NouveauCompetiteurPoids"  Height="25" TextWrapping="Wrap" Text="{Binding NouveauCompetiteurPoids,UpdateSourceTrigger=PropertyChanged}" Margin="10,5" GotFocus="textePoids_GotFocus" PreviewTextInput="textePoids_PreviewTextInput" ToolTip="Poids"/>
                         <ComboBox x:Name="NouveauCompetiteurListeClubs"  Text="{Binding NouveauCompetiteurClub,UpdateSourceTrigger=PropertyChanged}" Margin="10,5"  ItemsSource="{Binding ListeClubs}" Height="25" IsEditable="True" GotFocus="listeClub_GotFocus"  ToolTip="Club"/>
                         <ComboBox x:Name="NouveauCompetiteurListeCategories" Text="{Binding NouveauCompetiteurCategorie,UpdateSourceTrigger=PropertyChanged}" Margin="10,5" Height="25" IsEditable="True" ItemsSource="{Binding ListeCategoriesSansTous}" GotFocus="listeCategorie_GotFocus" IsReadOnly="True" ToolTip="Catégorie" />
-                       </StackPanel>
+                    </StackPanel>
                     <StackPanel Margin="5,0,0,0">
                         <GroupBox Header="Sexe" Height="87">
                             <StackPanel Orientation="Horizontal" >
@@ -76,7 +76,7 @@
                                 <TextBlock Text="Paramètres" VerticalAlignment="Center"></TextBlock>
                             </StackPanel>
                         </Button>
-                        
+
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
@@ -98,19 +98,45 @@
             </GroupBox>
             <GroupBox Header="Stats" MaxWidth="600" Margin="5,5,5,5">
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Inscrits">
-                        </Label>
-                        <Label Content="{Binding StatsCompetiteursInscrits}">
-                        </Label>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Présents : ">
-                        </Label>
-                        <Label Content="{Binding StatsCompetiteursPresents}">
-                        </Label>
-                    </StackPanel>
-                    
+                    <Expander>
+                        <Expander.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Inscrits" />
+                                <Label Content="{Binding StatsCompetiteursPresents}" />
+                            </StackPanel>
+                        </Expander.Header>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="100">
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Mini Poussins" Grid.Row="0" Grid.Column="0" Padding="0"/>
+                                <Label Content="Poussins" Grid.Row="1" Grid.Column="0" Padding="0"/>
+                                <Label Content="Benjamins" Grid.Row="2" Grid.Column="0" Padding="0"/>
+                                <Label Content="Minimes" Grid.Row="3" Grid.Column="0" Padding="0"/>
+                                <Label Content="Cadets" Grid.Row="4" Grid.Column="0" Padding="0"/>
+                                <Label Content="Juniors" Grid.Row="5" Grid.Column="0" Padding="0"/>
+                                <Label Content="Seniors" Grid.Row="6" Grid.Column="0" Padding="0"/>
+                                <Label Content="{Binding StatsMPPresents}" Grid.Row="0" Grid.Column="1" Padding="0"/>
+                                <Label Content="{Binding StatsPPresents}" Grid.Row="1" Grid.Column="1" Padding="0"/>
+                                <Label Content="{Binding StatsBPresents}" Grid.Row="2" Grid.Column="1" Padding="0"/>
+                                <Label Content="{Binding StatsMPresents}" Grid.Row="3" Grid.Column="1" Padding="0"/>
+                                <Label Content="{Binding StatsCPresents}" Grid.Row="4" Grid.Column="1" Padding="0"/>
+                                <Label Content="{Binding StatsJPresents}" Grid.Row="5" Grid.Column="1" Padding="0"/>
+                                <Label Content="{Binding StatsSPresents}" Grid.Row="6" Grid.Column="1" Padding="0"/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Expander>
                     <Button Name="ButtonResultatClub" Width="120" Height="40" Margin="10,0" Click="ButtonResultatClub_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Stats.png" Width="25" Height="25" Margin="5,0"/>
@@ -119,18 +145,18 @@
                     </Button>
                 </StackPanel>
             </GroupBox>
-            
+
         </StackPanel>
-        
+
         <GroupBox Header="Groupes" Margin="5,5,5,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Right">
             <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <DataGrid IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs }" Margin="5,5,5,5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="True" CanUserReorderColumns="True" CanUserSortColumns="True">
+                <DataGrid IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs }" Margin="5,5,5,5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True" CanUserSortColumns="True" >
                     <DataGrid.RowStyle>
                         <Style TargetType="DataGridRow">
                             <Setter Property="Background" Value="{Binding Converter={StaticResource ColorationColonnes}}"/>
                         </Style>
-                    </DataGrid.RowStyle>                    
-                    <DataGrid.Columns>                        
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
                         <DataGridCheckBoxColumn Binding="{Binding EstPresent}">
                             <DataGridCheckBoxColumn.Header>
                                 <StackPanel Orientation="Horizontal" >
@@ -138,9 +164,9 @@
                                 </StackPanel>
                             </DataGridCheckBoxColumn.Header>
                         </DataGridCheckBoxColumn>
-                        
+
                         <DataGridTextColumn Header="Poule" Binding="{Binding Poule}"/>
-                        
+
                         <DataGridTextColumn Binding="{Binding Nom}" >
                             <DataGridTextColumn.Header>
                                 <StackPanel Orientation="Horizontal">
@@ -149,7 +175,7 @@
                                 </StackPanel>
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
-                        
+
                         <DataGridTextColumn Binding="{Binding Prenom}" >
                             <DataGridTextColumn.Header>
                                 <StackPanel Orientation="Horizontal">
@@ -157,10 +183,10 @@
                                     <TextBox Name="FiltreColonnePrenom" Width="80" Margin="10,0,0,0" TextChanged="FiltreColonnesNomPrenom_TextChanged" />
                                 </StackPanel>
                             </DataGridTextColumn.Header>
-                        </DataGridTextColumn>               
+                        </DataGridTextColumn>
                         <DataGridTextColumn Header="Club" Width="0.5*" Binding="{Binding Club}" />
                         <DataGridTextColumn Header="Poids" Width="0.25*"  Binding="{Binding Poids}" />
-                        
+
                         <DataGridTextColumn Binding="{Binding Sexe}" >
                             <DataGridTextColumn.Header>
                                 <StackPanel Orientation="Horizontal">
@@ -171,26 +197,32 @@
                         </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Categorie}" >
                             <DataGridTextColumn.Header>
-                                    <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Catégorie" />
                                     <ComboBox Name="FiltreColonneCategorie" Margin="10,0,0,0"  IsSynchronizedWithCurrentItem="True" SelectionChanged="FiltresGrille_SelectionChanged" Text="Tous" IsReadOnly="True" IsEditable="False"/>
                                 </StackPanel>
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
 
-                        <DataGridCheckBoxColumn Binding="{Binding PourImpression}"  >
+                        <DataGridCheckBoxColumn Binding="{Binding PourImpression}" >
                             <DataGridCheckBoxColumn.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Imprimer" />
                                     <CheckBox Name="CheckBoxImprimer" Margin="10,0,0,0" Click="CheckBoxImprimer_Click" />
                                 </StackPanel>
                             </DataGridCheckBoxColumn.Header>
+                            <DataGridCheckBoxColumn.CellStyle>
+                                <Style>
+                                    <!-- <EventSetter Event="CheckBox.Checked" /> Handler="OnChecked" -->
+
+                                </Style>
+                            </DataGridCheckBoxColumn.CellStyle>
                         </DataGridCheckBoxColumn>
 
                         <DataGridTextColumn Header="Resultat" Binding="{Binding Resultat}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>
-        </GroupBox>        
+        </GroupBox>
     </DockPanel>
 </Window>

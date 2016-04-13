@@ -35,6 +35,7 @@ namespace CompetitionJudo.UI
         #endregion
 
         #region focus sur les champs de texte
+
         private void texteNom_GotFocus(object sender, RoutedEventArgs e)
         {
             var tb = (TextBox)sender;
@@ -52,19 +53,6 @@ namespace CompetitionJudo.UI
             var tb = (TextBox)sender;
             tb.Text = string.Empty;
         }
-        #endregion
-
-        #region Test sur l'input du poids
-        private void textePoids_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
-        {
-            foreach (char c in e.Text)
-            {
-                if (!Char.IsDigit(c) && c != ',' && c != '.')
-                {
-                    e.Handled = true;
-                }
-            }
-        }
 
         private void listeClub_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -77,9 +65,24 @@ namespace CompetitionJudo.UI
             var tb = (ComboBox)sender;
             tb.Text = string.Empty;
         }
+
         #endregion
 
+        // Test sur l'input du poids
+
+        private void textePoids_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            foreach (char c in e.Text)
+            {
+                if (!Char.IsDigit(c) && c != ',' && c != '.')
+                {
+                    e.Handled = true;
+                }
+            }
+        }        
+
         #region Filtres Grille
+
         private void FiltresGrille_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (FiltreColonneEstPrésent.SelectedValue != null && FiltreColonneSexe.SelectedValue != null && FiltreColonneCategorie.SelectedValue != null)
@@ -96,6 +99,7 @@ namespace CompetitionJudo.UI
         {
             FiltresGrille_SelectionChanged(null, null);
         }
+
         #endregion
 
         #region Methods
@@ -103,14 +107,25 @@ namespace CompetitionJudo.UI
         //Supprimer Competiteur
         private void boutonSupprimerCompetiteur_Click(object sender, RoutedEventArgs e)
         {
-            Competiteur c = (Competiteur)grilleCompetiteurs.SelectedItem;
-            MessageBoxResult rsltMessageBox = MessageBox.Show(string.Format("Supprimer un compétiteur ? {0}{1} {2}",Environment.NewLine,c.Prenom,c.Nom), "", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-
-            if (rsltMessageBox == MessageBoxResult.Yes && c!=null)
+            var ListeCompetiteursASupprimer = new List<Competiteur>();
+            if (grilleCompetiteurs.SelectedItems.Count > 0)
             {
-                c = (Competiteur)grilleCompetiteurs.SelectedItem;
-                VM.SupprimerCompetiteur(c);
+                foreach (Competiteur competiteur in grilleCompetiteurs.SelectedItems)
+                {
+                    //Competiteur c = (Competiteur)grilleCompetiteurs.SelectedItem;
+                    MessageBoxResult rsltMessageBox = MessageBox.Show(string.Format("Supprimer un compétiteur ? {0}{1} {2}", Environment.NewLine, competiteur.Prenom, competiteur.Nom), "", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+
+                    if (rsltMessageBox == MessageBoxResult.Yes)
+                    {
+                        ListeCompetiteursASupprimer.Add(competiteur);
+                    }
+                }
             }
+            foreach (var competiteur in ListeCompetiteursASupprimer)
+            {
+                VM.SupprimerCompetiteur(competiteur);
+            }
+
         }
 
         //Import depuis CSV
@@ -175,7 +190,7 @@ namespace CompetitionJudo.UI
         //Ouvre la fenetre des parametres
         private void boutonParametres_Click(object sender, RoutedEventArgs e)
         {
-            Action<NewDictionary<Categories, TimeSpan2>, NewDictionary < Categories, TimeSpan2 >> actionUpdateTempsCombats = updateTempsDeCombat;
+            Action<NewDictionary<Categories, TimeSpan2>, NewDictionary<Categories, TimeSpan2>> actionUpdateTempsCombats = updateTempsDeCombat;
             Action<int> actionUpdateNbJudokas = updateNombreJudokasParPoule;
 
             FenetreParametres fen = new FenetreParametres(actionUpdateTempsCombats, actionUpdateNbJudokas, VM.Donnee.TempsCombat, VM.Donnee.TempsImmo, VM.Donnee.NombreParPoule);
@@ -183,5 +198,13 @@ namespace CompetitionJudo.UI
         }
 
         #endregion
+
+
+        /*void OnChecked(object sender, RoutedEventArgs e)
+        {
+            var isChecked = ((CheckBox)((DataGridCell)sender).Content).IsChecked;
+            var comp = (Competiteur)grilleCompetiteurs.SelectedItem;
+            Task.Run(()=> VM.ModificationJudoka((int)comp.Poule, (bool)isChecked));
+        }*/
     }
 }
