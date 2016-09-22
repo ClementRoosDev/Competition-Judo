@@ -56,14 +56,13 @@ namespace CompetitionJudo.Data
                 }
             }
         }
-
-
-        public List<Competiteur> listeCompetiteur;
+        public int Id { get; }
 
         public Competiteur()
         {
             Resultat = null;
             Poule = null;
+            Id = new Guid().GetHashCode();
         }
     }
 }

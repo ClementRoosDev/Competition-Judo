@@ -39,7 +39,6 @@ namespace CompetitionJudo.UI
             this.Close();
         }
 
-
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox) sender;

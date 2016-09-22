@@ -353,7 +353,7 @@ namespace CompetitionJudo.UI.ViewModel
         {
             get
             {
-                List<Groupe> listeGroupe = new List<Groupe>() { new Groupe { Categorie = Categories.Benjamin} };
+                List<Groupe> listeGroupe = new List<Groupe>();
 
                 List<int> listegroupes = new List<int>();
                 foreach (var competiteur in Donnee.ListeCompetiteurs.Where(c => c.Poule != null))

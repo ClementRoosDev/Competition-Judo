@@ -239,32 +239,26 @@
                     </StackPanel>
                 </GroupBox.Header>
                 <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <DataGrid Name="GrilleGroupes" IsSynchronizedWithCurrentItem="True" Margin="5,5,5,5" ItemsSource="{Binding Path=ListeGroupes}" AutoGenerateColumns="False" >
+                    <DataGrid Name="GrilleGroupes" IsSynchronizedWithCurrentItem="False" Margin="5,5,5,5" CanUserAddRows="False" ItemsSource="{Binding Path=ListeGroupes}" AutoGenerateColumns="False" >
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
                                 <Setter Property="Background" Value="{Binding Converter={StaticResource ColorationColonnesGroupes}}"/>
                             </Style>
                         </DataGrid.RowStyle>
-
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding id}" Header="Numero">
+                            <DataGridTextColumn Binding="{Binding id}" Header="Numero" IsReadOnly="True">
                             </DataGridTextColumn>
-
-                            <DataGridTextColumn Binding="{Binding Categorie}" Header="Categorie">
+                            <DataGridTextColumn Binding="{Binding Categorie}" Header="Categorie" IsReadOnly="True">
                             </DataGridTextColumn>
-
-                            <DataGridTextColumn Binding="{Binding PoidsMin}" Header="Poids Min">
+                            <DataGridTextColumn Binding="{Binding PoidsMin}" Header="Poids Min" IsReadOnly="True">
                             </DataGridTextColumn>
-
-                            <DataGridTextColumn Binding="{Binding PoidsMax}" Header="Poids max">
+                            <DataGridTextColumn Binding="{Binding PoidsMax}" Header="Poids max" IsReadOnly="True">
                             </DataGridTextColumn>
-
-                            <DataGridTextColumn Binding="{Binding CompositionGroupe}" Header="Composition">
+                            <DataGridTextColumn Binding="{Binding CompositionGroupe}" Header="Composition" IsReadOnly="True">
                             </DataGridTextColumn>
-
-                            <DataGridTextColumn Binding="{Binding Competiteurs.Count}" Header="Nbr Competiteurs">
+                            <DataGridTextColumn Binding="{Binding Competiteurs.Count}" Header="Nbr Competiteurs" IsReadOnly="True">
                             </DataGridTextColumn>
-                            <DataGridCheckBoxColumn Binding="{Binding Competiteurs.PourImpression}" Header="Imprimer"></DataGridCheckBoxColumn>
+                            <DataGridCheckBoxColumn Binding="{Binding Competiteurs.PourImpression}" Header="Imprimer"  IsReadOnly="False" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
