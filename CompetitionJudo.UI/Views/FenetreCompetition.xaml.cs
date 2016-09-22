@@ -197,10 +197,11 @@ namespace CompetitionJudo.UI
             fen.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ClickEditCompetiteur(object sender, DataGridRowEditEndingEventArgs e)
         {
-            GrilleGroupes.ItemsSource = VM.ListeGroupes;
+            VM.EditCompetiteur();
         }
+
 
         #endregion
 

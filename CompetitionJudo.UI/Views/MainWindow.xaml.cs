@@ -84,7 +84,8 @@ namespace CompetitionJudo.UI
 
                 CompetitionManager CM = new CompetitionManager();
                 var donneesNouvelleCompetition = CM.CreerNouvelleCompetition(VM.LieuNouvelleCompetition,VM.NomNouvelleCompetition, VM.DateNouvelleCompetition,dialog.FileName);
-
+                DataSerialisation DS = new DataSerialisation();
+                DS.EnregistrerCompetition(dialog.FileName,donneesNouvelleCompetition);
                 var fenetreCompetition = new FenetreCompetition(donneesNouvelleCompetition);
                 fenetreCompetition.Show();
 

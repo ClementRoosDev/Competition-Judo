@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -35,6 +36,7 @@ namespace CompetitionJudo.UI.ViewModel
         private ICommand clickButtonEnregistrerCompetition;
         private ICommand clickButtonGenererGroupes;
         private ICommand clickButtonImprimerGroupes;
+        private ICommand clickButtonRefreshGroupes;
 
         #endregion
 
@@ -90,6 +92,18 @@ namespace CompetitionJudo.UI.ViewModel
                     clickButtonImprimerGroupes = new RelayCommand(p => ImprimerGroupes());
                 }
                 return clickButtonImprimerGroupes;
+            }
+        }
+
+        public ICommand ClickRefreshGroupes
+        {
+            get
+            {
+                if (clickButtonRefreshGroupes == null)
+                {
+                    clickButtonRefreshGroupes = new RelayCommand(p => RefreshGroupes());
+                }
+                return clickButtonRefreshGroupes;
             }
         }
 
@@ -374,7 +388,7 @@ namespace CompetitionJudo.UI.ViewModel
                     groupeTemp.TempsCombat = Donnee.TempsCombat.ToDictionary().First(k => k.Key == groupeTemp.Categorie).Value;
                     groupeTemp.TempsImmo = Donnee.TempsImmo.ToDictionary().First(k => k.Key == groupeTemp.Categorie).Value;
 
-                    if (groupeTemp.Competiteurs.Select(c=>c.Sexe).Distinct().Count()==1)
+                    if (groupeTemp.Competiteurs.Select(c => c.Sexe).Distinct().Count() == 1)
                     {
                         groupeTemp.CompositionGroupe = groupeTemp.Competiteurs.First().Sexe;
                     }
@@ -684,75 +698,44 @@ namespace CompetitionJudo.UI.ViewModel
             }
 
             OnPropertyChanged("ListeCompetiteurs");
+            OnPropertyChanged("ListeGroupes");
         }
 
         private void ImprimerGroupes()
         {
-            if (Donnee.ListeCompetiteurs.Any(c => c.PourImpression && c.Poule == null))
+            var lesGroupes = ListeGroupes.Where(g => g.is).ToList();
+            if (lesGroupes.Count > 0)
             {
-                List<Competiteur> competiteursNonValides = Donnee.ListeCompetiteurs.Where(c => c.PourImpression && c.Poule == null).ToList();
-                competiteursNonValides.OrderBy(c => c.Nom);
-                MessageBox.Show(String.Format("{0}{1}Nom : {2}", "Des competiteurs ne sont pas présents", Environment.NewLine, string.Join(" ,", competiteursNonValides.Select(c => c.Nom)), "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
-            }
-            else
-            {
-                var listegroupes = new List<int>();
-
-                foreach (var competiteur in Donnee.ListeCompetiteurs.Where(c => c.PourImpression))
+                if (!lesGroupes.Any(g => !g.EstValide))
                 {
-                    if (competiteur.Poule != null)
-                    {
-                        if (!listegroupes.Any(c => c == competiteur.Poule))
-                        {
-                            listegroupes.Add((int)competiteur.Poule);
-                        }
-                    }
-                }
-
-                var lesGroupes = new List<Groupe>();
-
-                foreach (var groupe in listegroupes)
-                {
-                    var groupeTemp = new Groupe() { MaxCompetiteursParPoule = Donnee.NombreParPoule, id = groupe };
-
-                    groupeTemp.Competiteurs.AddRange(Donnee.ListeCompetiteurs.Where(c => c.Poule == groupe && c.PourImpression));
-
-                    groupeTemp.Categorie = ListeCategories.First(c => c == groupeTemp.Competiteurs.First().Categorie);
-                    groupeTemp.TempsCombat = Donnee.TempsCombat.ToDictionary().First(k => k.Key == groupeTemp.Categorie).Value;
-                    groupeTemp.TempsImmo = Donnee.TempsImmo.ToDictionary().First(k => k.Key == groupeTemp.Categorie).Value;
-
-
-                    lesGroupes.Add(groupeTemp);
-                }
-                if (lesGroupes.Count > 0)
-                {
-                    if (!lesGroupes.Any(g => !g.EstValide))
-                    {
-                        var fenetreImpression = new FenetreImpression(lesGroupes, Donnee.NomCompetition, Donnee.DateCompetition);
-                        fenetreImpression.ShowDialog();
-                    }
-                    else
-                    {
-                        List<int> listeGroupesNonValides = lesGroupes.Where(g => !g.EstValide).Select(g => g.id).ToList();
-                        listeGroupesNonValides.Sort();
-                        MessageBox.Show(String.Format("{0}{1}Poules n° : {2}", "Des poules ont un mauvais nombre de compétiteurs ", Environment.NewLine, string.Join(", ", listeGroupesNonValides), "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
-                    }
+                    var fenetreImpression = new FenetreImpression(lesGroupes, Donnee.NomCompetition, Donnee.DateCompetition);
+                    fenetreImpression.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show(String.Format("Aucun de groupe cochés pour l'impression", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
+                    List<int> listeGroupesNonValides = lesGroupes.Where(g => !g.EstValide).Select(g => g.id).ToList();
+                    listeGroupesNonValides.Sort();
+                    MessageBox.Show(String.Format("{0}{1}Poules n° : {2}", "Des poules ont un mauvais nombre de compétiteurs ", Environment.NewLine, string.Join(", ", listeGroupesNonValides), "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
                 }
-
+            }
+            else
+            {
+                MessageBox.Show(String.Format("Aucun de groupe cochés pour l'impression", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
             }
 
         }
 
-        #endregion
-
-        public void ModificationJudoka(int numeroPoule, bool valeurImpression)
+        private void RefreshGroupes()
         {
-            Donnee.ListeCompetiteurs.Where(c => c.Poule == numeroPoule).Select(c => { c.PourImpression = valeurImpression; return c; }).ToList();
-            OnPropertyChanged("ListeCompetiteurs");
+            OnPropertyChanged("ListeGroupes");
         }
+
+        public async void EditCompetiteur()
+        {
+            await Task.Delay(100);
+            OnPropertyChanged("ListeGroupes");
+        }
+
+        #endregion
     }
 }

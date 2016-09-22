@@ -157,7 +157,7 @@
 
             <GroupBox Header="Groupes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Right" Grid.Row="0">
                 <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <DataGrid IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs }" Margin="5,5,5,5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True" CanUserSortColumns="True" >
+                    <DataGrid  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs }" Margin="5,5,5,5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True" CanUserSortColumns="True" RowEditEnding="ClickEditCompetiteur"  >
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
                                 <Setter Property="Background" Value="{Binding Converter={StaticResource ColorationColonnesCompetiteurs}}"/>
@@ -172,7 +172,7 @@
                                 </DataGridCheckBoxColumn.Header>
                             </DataGridCheckBoxColumn>
 
-                            <DataGridTextColumn Header="Poule" Binding="{Binding Poule}"/>
+                            <DataGridTextColumn Header="Poule" Binding="{Binding Poule}"  />
 
                             <DataGridTextColumn Binding="{Binding Nom}" >
                                 <DataGridTextColumn.Header>
@@ -235,7 +235,7 @@
                 <GroupBox.Header>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Groupes"></Label>
-                        <Button Content="Refresh" Click="Button_Click"></Button>
+                        <Button Content="Refresh" Command="{Binding ClickRefreshGroupes}"></Button>
                     </StackPanel>
                 </GroupBox.Header>
                 <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
