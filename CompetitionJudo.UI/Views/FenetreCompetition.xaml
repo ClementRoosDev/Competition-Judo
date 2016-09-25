@@ -83,7 +83,7 @@
             </GroupBox>
             <GroupBox Header="Imprimer / Enregistrer" Width="340" MaxWidth="600" Margin="5,5,5,5">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5,5,5,5">
-                    <Button x:Name="boutonGenererUnGroupe" Height="40" Command="{Binding ClickImprimerGroupes}" >
+                    <Button x:Name="boutonGenererUnGroupe" Height="40" Command="{Binding ClickImprimerGroupes}" Click="boutonGenererUnGroupe_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Name="ImageImprimer" Source="/Resources/Imprimer.png" Width="25" Height="25" Margin="5,0"/>
                             <TextBlock Text="Imprimer" VerticalAlignment="Center"></TextBlock>
@@ -157,7 +157,7 @@
 
             <GroupBox Header="Groupes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Right" Grid.Row="0">
                 <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <DataGrid  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs }" Margin="5,5,5,5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True" CanUserSortColumns="True" RowEditEnding="ClickEditCompetiteur"  >
+                    <DataGrid  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs}" Margin="5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True" CanUserSortColumns="True" RowEditEnding="KeyEditCompetiteur"  MouseLeftButtonDown="grilleCompetiteurs_MouseLeftButtonDown">
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
                                 <Setter Property="Background" Value="{Binding Converter={StaticResource ColorationColonnesCompetiteurs}}"/>
@@ -172,7 +172,7 @@
                                 </DataGridCheckBoxColumn.Header>
                             </DataGridCheckBoxColumn>
 
-                            <DataGridTextColumn Header="Poule" Binding="{Binding Poule}"  />
+                            <DataGridTextColumn Header="Poule" Binding="{Binding Poule,TargetNullValue=''}"  />
 
                             <DataGridTextColumn Binding="{Binding Nom}" >
                                 <DataGridTextColumn.Header>
@@ -209,24 +209,9 @@
                                         <ComboBox Name="FiltreColonneCategorie" Margin="10,0,0,0"  IsSynchronizedWithCurrentItem="True" SelectionChanged="FiltresGrille_SelectionChanged" Text="Tous" IsReadOnly="True" IsEditable="False"/>
                                     </StackPanel>
                                 </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
+                            </DataGridTextColumn>                      
 
-                            <DataGridCheckBoxColumn Binding="{Binding PourImpression}" >
-                                <DataGridCheckBoxColumn.Header>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Imprimer" />
-                                        <CheckBox Name="CheckBoxImprimer" Margin="10,0,0,0" Click="CheckBoxImprimer_Click" />
-                                    </StackPanel>
-                                </DataGridCheckBoxColumn.Header>
-                                <DataGridCheckBoxColumn.CellStyle>
-                                    <Style>
-                                        <!-- <EventSetter Event="CheckBox.Checked" /> Handler="OnChecked" -->
-
-                                    </Style>
-                                </DataGridCheckBoxColumn.CellStyle>
-                            </DataGridCheckBoxColumn>
-
-                            <DataGridTextColumn Header="Resultat" Binding="{Binding Resultat}" />
+                            <DataGridTextColumn Header="Resultat" Binding="{Binding Resultat, TargetNullValue=''}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
@@ -235,30 +220,33 @@
                 <GroupBox.Header>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Groupes"></Label>
-                        <Button Content="Refresh" Command="{Binding ClickRefreshGroupes}"></Button>
                     </StackPanel>
                 </GroupBox.Header>
                 <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <DataGrid Name="GrilleGroupes" IsSynchronizedWithCurrentItem="False" Margin="5,5,5,5" CanUserAddRows="False" ItemsSource="{Binding Path=ListeGroupes}" AutoGenerateColumns="False" >
+                    <DataGrid Name="GrilleGroupes" IsSynchronizedWithCurrentItem="True" Margin="5,5,5,5" CanUserAddRows="False" ItemsSource="{Binding Path=ListeGroupes}" AutoGenerateColumns="False" >
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
                                 <Setter Property="Background" Value="{Binding Converter={StaticResource ColorationColonnesGroupes}}"/>
                             </Style>
                         </DataGrid.RowStyle>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding id}" Header="Numero" IsReadOnly="True">
+                            <DataGridTextColumn Binding="{Binding id}" Header="Numero" IsReadOnly="True" Width="0.5*">
                             </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding Categorie}" Header="Categorie" IsReadOnly="True">
+                            <DataGridTextColumn Binding="{Binding Categorie}" Header="Categorie" IsReadOnly="True" Width="0.5*">
                             </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding PoidsMin}" Header="Poids Min" IsReadOnly="True">
+                            <DataGridTextColumn Binding="{Binding PoidsMin}" Header="Poids Min" IsReadOnly="True" Width="0.5*">
                             </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding PoidsMax}" Header="Poids max" IsReadOnly="True">
+                            <DataGridTextColumn Binding="{Binding PoidsMax}" Header="Poids max" IsReadOnly="True" Width="0.5*">
                             </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding CompositionGroupe}" Header="Composition" IsReadOnly="True">
+                            <DataGridTextColumn Binding="{Binding CompositionGroupe}" Header="Composition" IsReadOnly="True" Width="0.5*">
                             </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding Competiteurs.Count}" Header="Nbr Competiteurs" IsReadOnly="True">
+                            <DataGridTextColumn Binding="{Binding Competiteurs.Count}" Header="Nbr Competiteurs" IsReadOnly="True" Width="0.5*">
                             </DataGridTextColumn>
-                            <DataGridCheckBoxColumn Binding="{Binding Competiteurs.PourImpression}" Header="Imprimer"  IsReadOnly="False" />
+                            <DataGridTextColumn Binding="{Binding TypeGroupe}" Header="Type" Width="0.5*">
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Commentaire}" Header="Commentaire" Width="*">
+                            </DataGridTextColumn>
+                            <DataGridCheckBoxColumn Binding="{Binding PourImpression}" Header="Imprimer"  IsReadOnly="False" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>

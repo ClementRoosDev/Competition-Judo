@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Xml.Serialization;
 using Microsoft.Win32;
-using System.Text;
-using System.Globalization;
 using CompetitionJudo.Data.Donnees;
 using CompetitionJudo.Data;
 using CompetitionJudo.UI.ViewModel;
-using CompetitionJudo.Business.Serialisation;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace CompetitionJudo.UI
 {
@@ -175,18 +169,6 @@ namespace CompetitionJudo.UI
             fenetreStats.ShowDialog();
         }
 
-        //coche ou dechoche toutes les checkbox impression 
-        private void CheckBoxImprimer_Click(object sender, RoutedEventArgs e)
-        {
-            bool etat = (bool)CheckBoxImprimer.IsChecked;
-            foreach (var item in grilleCompetiteurs.Items)
-            {
-                if (((Competiteur)item).Poule != 0)
-                    ((Competiteur)item).PourImpression = etat;
-            }
-            grilleCompetiteurs.Items.Refresh();
-        }
-
         //Ouvre la fenetre des parametres
         private void boutonParametres_Click(object sender, RoutedEventArgs e)
         {
@@ -197,20 +179,32 @@ namespace CompetitionJudo.UI
             fen.ShowDialog();
         }
 
-        private void ClickEditCompetiteur(object sender, DataGridRowEditEndingEventArgs e)
+        private void KeyEditCompetiteur(object sender, DataGridRowEditEndingEventArgs e)
         {
             VM.EditCompetiteur();
         }
 
+        private void ClickEditCompetiteur(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            VM.EditCompetiteur();
+        }
+
+        private void grilleCompetiteurs_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            VM.EditCompetiteur();
+        }
+
+        private void boutonGenererUnGroupe_Click(object sender, RoutedEventArgs e)
+        {
+            ObservableCollection<Groupe> listGroupPourImpression = new ObservableCollection<Groupe>();
+            foreach (var groupe in GrilleGroupes.Items)
+            {
+                listGroupPourImpression.Add((Groupe)groupe);
+            }
+            VM.ListeGroupes = listGroupPourImpression;
+        }
+
 
         #endregion
-
-
-        /*void OnChecked(object sender, RoutedEventArgs e)
-        {
-            var isChecked = ((CheckBox)((DataGridCell)sender).Content).IsChecked;
-            var comp = (Competiteur)grilleCompetiteurs.SelectedItem;
-            Task.Run(()=> VM.ModificationJudoka((int)comp.Poule, (bool)isChecked));
-        }*/
     }
 }

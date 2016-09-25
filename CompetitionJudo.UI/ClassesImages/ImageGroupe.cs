@@ -34,7 +34,7 @@ namespace CompetitionJudo.UI
 
         private void init()
         {
-            if (Groupe.typeGroupe == TypeGroupe.Tableau)
+            if (Groupe.TypeGroupe == TypeGroupe.Tableau)
             {
                 if (Groupe.Competiteurs.Count <= 4)
                 {

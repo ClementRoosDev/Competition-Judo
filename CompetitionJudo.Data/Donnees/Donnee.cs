@@ -11,6 +11,7 @@ namespace CompetitionJudo.Data.Donnees
     public class Donnee
     {
         public ObservableCollection<Competiteur> ListeCompetiteurs { get; set; }
+        public ObservableCollection<Groupe> ListeGroupes { get; set; }
 
         public string LieuCompetition { get; set; }
         public string NomCompetition { get; set; }

@@ -51,7 +51,7 @@ namespace CompetitionJudo.UI
                 {
                     actualSelected = groupe.Competiteurs;
                     tableauCompetiteurs.DataContext = actualSelected;
-                    if (groupe.typeGroupe == TypeGroupe.Poule)
+                    if (groupe.TypeGroupe == TypeGroupe.Poule)
                     {
                         estUnePoule();
                     }
@@ -81,24 +81,22 @@ namespace CompetitionJudo.UI
             {
                 if (groupe.id.ToString().Equals(ComboBoxListeGroupes.Text))
                 {
-                    if (groupe.typeGroupe == TypeGroupe.Poule)
+                    if (groupe.TypeGroupe == TypeGroupe.Poule)
                     {
                         estUnTableau();
-                        groupe.typeGroupe = TypeGroupe.Tableau;
+                        groupe.TypeGroupe = TypeGroupe.Tableau;
                     }
                     else
                     {
                         estUnePoule();
-                        groupe.typeGroupe = TypeGroupe.Poule;
+                        groupe.TypeGroupe = TypeGroupe.Poule;
                     }
                 }
             }
         }
 
-
         private void pd_PrintPageSoloPage(object sender, PrintPageEventArgs ev)
         {
-
             Graphics g = ev.Graphics;
             
             var ig = new ImageGroupe(VM.LesGroupes.First(c => c.id.ToString().Equals(ComboBoxListeGroupes.Text)));
@@ -130,13 +128,9 @@ namespace CompetitionJudo.UI
             }
         }
 
-
-
         public void pd_PrintPage(object sender, PrintPageEventArgs ev)
         {
-
             Graphics g = ev.Graphics;
-
 
             var ig = new ImageGroupe(VM.LesGroupes.ElementAt(VM.LesGroupes.Count() - VM.ElementsAImprimer));
             var poidsMinG1 = ig.Organisation.grilleCompetiteurs.Min(c => c.Poids);
@@ -145,11 +139,8 @@ namespace CompetitionJudo.UI
             System.Drawing.Point ulCorner = new System.Drawing.Point(1, 1);
             g.DrawImage(ig.imageGroupe, ulCorner);
 
-
-
             g.DrawString(string.Format("{0} - {1}", VM.NomCompetition.ToString(), String.Format("{0:d MMMM yyyy}", VM.DateCompetition)), drawFont, drawBrush, new PointF(320, 20));
-
-
+            
             g.DrawString(string.Format("{0} : poule n°{1} de {2}kg à {3}kg", ig.Groupe.Categorie, ig.Organisation.grilleCompetiteurs[0].Poule.ToString(), poidsMinG1, poidsMaxG1), drawFont, drawBrush, new PointF(320, 40));
 
             g.DrawString(string.Format("Temps Combat : {0}m{1}s", ig.Groupe.TempsCombat.TimeSinceLastEvent.Minutes, ig.Groupe.TempsCombat.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 80));
@@ -178,8 +169,7 @@ namespace CompetitionJudo.UI
                 g.DrawImage(ig2.imageGroupe, ulCorner2);
 
                 g.DrawString(string.Format("{0} - {1}", VM.NomCompetition.ToString(), String.Format("{0:d MMMM yyyy}", VM.DateCompetition)), drawFont, drawBrush, new PointF(320, 20 + 585));
-
-
+                
                 g.DrawString(string.Format("{0} : poule n°{1} de {2}kg à {3}kg", ig2.Groupe.Categorie, ig2.Organisation.grilleCompetiteurs[0].Poule.ToString(), poidsMinG2, poidsMaxG2), drawFont, drawBrush, new PointF(320, 40+585));
 
                 g.DrawString(string.Format("Temps Combat : {0}m{1}s", ig2.Groupe.TempsCombat.TimeSinceLastEvent.Minutes, ig2.Groupe.TempsCombat.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 80+585));

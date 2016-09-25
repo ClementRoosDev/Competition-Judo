@@ -26,11 +26,11 @@ namespace CompetitionJudo.Data
         }
         public List<Competiteur> Competiteurs { get; set; }
         public int id { get; set; }            
-        public TypeGroupe typeGroupe;
+        public TypeGroupe TypeGroupe { get; set; }
         public Groupe()
         {
             Competiteurs = new List<Competiteur>();
-            typeGroupe = TypeGroupe.Poule;
+            TypeGroupe = TypeGroupe.Poule;
         }
 
         public override string ToString()
@@ -42,7 +42,7 @@ namespace CompetitionJudo.Data
 
         public double? PoidsMin { get { if (Competiteurs.Count > 0) return Competiteurs.OrderBy(c => c.Poids).First().Poids; else return null; } }
         public double? PoidsMax { get {  if (Competiteurs.Count > 0) return Competiteurs.OrderByDescending(c => c.Poids).First().Poids; else return null; } }
-        public Sexes CompositionGroupe { get; set; }
+        public Sexes CompositionGroupe { get; set; }        
     }
 
     public enum TypeGroupe

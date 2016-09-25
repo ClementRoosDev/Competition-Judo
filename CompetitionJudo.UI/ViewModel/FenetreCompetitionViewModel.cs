@@ -36,7 +36,6 @@ namespace CompetitionJudo.UI.ViewModel
         private ICommand clickButtonEnregistrerCompetition;
         private ICommand clickButtonGenererGroupes;
         private ICommand clickButtonImprimerGroupes;
-        private ICommand clickButtonRefreshGroupes;
 
         #endregion
 
@@ -92,18 +91,6 @@ namespace CompetitionJudo.UI.ViewModel
                     clickButtonImprimerGroupes = new RelayCommand(p => ImprimerGroupes());
                 }
                 return clickButtonImprimerGroupes;
-            }
-        }
-
-        public ICommand ClickRefreshGroupes
-        {
-            get
-            {
-                if (clickButtonRefreshGroupes == null)
-                {
-                    clickButtonRefreshGroupes = new RelayCommand(p => RefreshGroupes());
-                }
-                return clickButtonRefreshGroupes;
             }
         }
 
@@ -397,11 +384,16 @@ namespace CompetitionJudo.UI.ViewModel
                         groupeTemp.CompositionGroupe = Sexes.Mixte;
                     }
 
-
                     listeGroupe.Add(groupeTemp);
                 }
 
                 return new ObservableCollection<Groupe>(listeGroupe);
+            }
+            set
+            {
+                Donnee.ListeGroupes = value;
+                OnPropertyChanged("ListeCompetiteurs");
+                OnPropertyChanged("ListeGroupes");
             }
         }
 
@@ -534,6 +526,7 @@ namespace CompetitionJudo.UI.ViewModel
             OnPropertyChanged("StatsCompetiteursInscrits");
             OnPropertyChanged("StatsCompetiteursPresents");
             OnPropertyChanged("ListeCompetiteurs");
+            OnPropertyChanged("ListeGroupes");
         }
 
         public void QuickAddCompetiteur(Competiteur competiteur)
@@ -652,7 +645,7 @@ namespace CompetitionJudo.UI.ViewModel
         private void GenererGroupes()
         {
             Donnee.ListeCompetiteurs = new ObservableCollection<Competiteur>(Donnee.ListeCompetiteurs.OrderBy(c => c.Categorie).ThenBy(d => d.Sexe).ThenBy(f => f.Poids).ToList());
-
+            
             int poule = 1;
             int compteur = 1;
 
@@ -696,14 +689,13 @@ namespace CompetitionJudo.UI.ViewModel
                     pouleVide = true;
                 }
             }
-
             OnPropertyChanged("ListeCompetiteurs");
             OnPropertyChanged("ListeGroupes");
         }
 
         private void ImprimerGroupes()
         {
-            var lesGroupes = ListeGroupes.Where(g => g.is).ToList();
+            var lesGroupes = Donnee.ListeGroupes.Where(g => g.PourImpression).ToList();
             if (lesGroupes.Count > 0)
             {
                 if (!lesGroupes.Any(g => !g.EstValide))
@@ -723,11 +715,6 @@ namespace CompetitionJudo.UI.ViewModel
                 MessageBox.Show(String.Format("Aucun de groupe cochés pour l'impression", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
             }
 
-        }
-
-        private void RefreshGroupes()
-        {
-            OnPropertyChanged("ListeGroupes");
         }
 
         public async void EditCompetiteur()
