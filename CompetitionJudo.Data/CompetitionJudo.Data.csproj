@@ -93,6 +93,18 @@
     <None Include="Resources\TemplateT8.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Poule2.png" />
+    <None Include="Resources\Poule3.png" />
+    <None Include="Resources\Poule4.png" />
+    <None Include="Resources\Poule5.png" />
+    <None Include="Resources\Poule2Resize.png" />
+    <None Include="Resources\Poule3Resize.png" />
+    <None Include="Resources\Poule4Resize.png" />
+    <None Include="Resources\Poule5Resize.png" />
+    <None Include="Resources\ResizePoule2.png" />
+    <None Include="Resources\ResizePoule3.png" />
+    <None Include="Resources\ResizePoule4.png" />
+    <None Include="Resources\ResizePoule5.png" />
     <Content Include="Resources\templateP2.png" />
     <Content Include="Resources\templateP3.png" />
     <Content Include="Resources\templateP4.png" />

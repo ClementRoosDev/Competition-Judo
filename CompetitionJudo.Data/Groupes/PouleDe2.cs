@@ -12,7 +12,7 @@ namespace CompetitionJudo.Data
         public PouleDe2(List<Competiteur> grilleCompetiteurs)
         {
             this.grilleCompetiteurs = grilleCompetiteurs;
-            this.sourceImage = Resources.templateP2;
+            this.sourceImage = Resources.ResizePoule2;
             CreerCoordonnees();    
         }
 
@@ -25,16 +25,16 @@ namespace CompetitionJudo.Data
             listeCoordonneesNom = new List<Coordonnee>();
             listeCoordonneesPrenom = new List<Coordonnee>();
             listeCoordonneesClub = new List<Coordonnee>();
-            var n1 = new Coordonnee(18, 200);
-            var n2 = new Coordonnee(18, 260);
+            var n1 = new Coordonnee(45, 210);
+            var n2 = new Coordonnee(45, 270);
             listeCoordonneesNom.Add(n1);
             listeCoordonneesNom.Add(n2);
-            var p1 = new Coordonnee(116, 200);
-            var p2 = new Coordonnee(116, 260);
+            var p1 = new Coordonnee(145, 210);
+            var p2 = new Coordonnee(145, 270);
             listeCoordonneesPrenom.Add(p1);
             listeCoordonneesPrenom.Add(p2);
-            var c1 = new Coordonnee(207, 200);
-            var c2 = new Coordonnee(207, 260);
+            var c1 = new Coordonnee(258, 210);
+            var c2 = new Coordonnee(258, 270);
             listeCoordonneesClub.Add(c1);
             listeCoordonneesClub.Add(c2);
         }
