@@ -189,6 +189,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Guide.pptx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -298,6 +299,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logoJCV2Ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\help.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

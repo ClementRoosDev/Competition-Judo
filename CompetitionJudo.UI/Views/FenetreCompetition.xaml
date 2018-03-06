@@ -20,7 +20,7 @@
 
     <DockPanel >
         <StackPanel DockPanel.Dock="Left">
-            <GroupBox Header="Competiteur"  Margin="5,5,5,5" Width="340" MaxWidth="500">
+            <GroupBox Header="Ajout competiteur"  Margin="5,5,5,5" Width="340" MaxWidth="500">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                     <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Width="130">
                         <TextBox Name="NouveauCompetiteurNom"  TextWrapping="Wrap" Text="{Binding NouveauCompetiteurNom,UpdateSourceTrigger=PropertyChanged}" Margin="10,5" Height="25" GotFocus="texteNom_GotFocus" ToolTip="Nom" />
@@ -54,15 +54,33 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Options compétition" Width="340"  Margin="5,5,5,5">
-                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,5">
-                    <StackPanel Orientation="Vertical">
-                        <Button x:Name="boutonEnregistrerCompetition" Margin="10,5" Height="40" Command="{Binding ClickButtonEnregistrerCompetition}">
+            <GroupBox Header="Fonctions" Width="340" MaxWidth="600" Margin="5,5,5,5">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5,5,5,5">
+                    <StackPanel>
+                        <Button x:Name="boutonGenererPoules" HorizontalAlignment="Right" Width="140"  Margin="10,5" Height="40" Command="{Binding ClickGenererGroupes}">
                             <StackPanel Orientation="Horizontal">
-                                <Image Name="ImageEnregistrer" Source="/Resources/Enregistrer.png" Width="30" Height="30" Margin="5,0"/>
-                                <TextBlock Text="Enregistrer" VerticalAlignment="Center"></TextBlock>
+                                <Image  Name="ImageGenerer" Source="/Resources/process.png" Width="25" Height="30" Margin="5,0"/>
+                                <TextBlock Text="Génerer poules" VerticalAlignment="Center"></TextBlock>
                             </StackPanel>
                         </Button>
+                        <Button x:Name="boutonGenererUnGroupe" Height="40"  Margin="10,5" Width="140" Command="{Binding ClickImprimerGroupes}" Click="boutonGenererUnGroupe_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="ImageImprimer" Source="/Resources/Imprimer.png" Width="25" Height="30" Margin="5,0"/>
+                                <TextBlock Text="Imprimer" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <Button x:Name="boutonEnregistrerCompetition" Margin="10,5" Height="40" Width="140" Command="{Binding ClickButtonEnregistrerCompetition}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Name="ImageEnregistrer" Source="/Resources/Enregistrer.png" Width="30" Height="30" Margin="5,0"/>
+                            <TextBlock Text="Enregistrer" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Options" Width="340"  Margin="5,5,5,5">
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,5">
+                    <StackPanel Orientation="Vertical">
                         <Button x:Name="boutonImporterExcel" HorizontalAlignment="Right" Width="140" Margin="10,5" Height="40" Click="boutonImporterExcel_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image  Name="ImageImporter" Source="/Resources/Importer.png" Width="25" Height="25" Margin="5,0"/>
@@ -78,22 +96,6 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-                </StackPanel>
-            </GroupBox>
-            <GroupBox Header="Générer / Imprimer groupes" Width="340" MaxWidth="600" Margin="5,5,5,5">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5,5,5,5">
-                    <Button x:Name="boutonGenererPoules" HorizontalAlignment="Right" Width="140"  Margin="10,5" Height="40" Command="{Binding ClickGenererGroupes}">
-                        <StackPanel Orientation="Horizontal">
-                            <Image  Name="ImageGenerer" Source="/Resources/process.png" Width="25" Height="30" Margin="5,0"/>
-                            <TextBlock Text="Génerer poules" VerticalAlignment="Center"></TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="boutonGenererUnGroupe" Height="40"  Margin="10,5" Width="100" Command="{Binding ClickImprimerGroupes}" Click="boutonGenererUnGroupe_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Name="ImageImprimer" Source="/Resources/Imprimer.png" Width="25" Height="30" Margin="5,0"/>
-                            <TextBlock Text="Imprimer" VerticalAlignment="Center"></TextBlock>
-                        </StackPanel>
-                    </Button>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Stats" MaxWidth="600" Margin="5,5,5,5">
@@ -154,7 +156,7 @@
                 <RowDefinition Height="*"  />
             </Grid.RowDefinitions>
 
-            <GroupBox Header="Groupes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Right" Grid.Row="0">
+            <GroupBox Header="Compétiteurs" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Right" Grid.Row="0">
                 <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <DataGrid  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=ListeCompetiteurs}" Margin="5" Name="grilleCompetiteurs" IsReadOnly="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="True" CanUserSortColumns="True" RowEditEnding="KeyEditCompetiteur"  MouseLeftButtonDown="grilleCompetiteurs_MouseLeftButtonDown">
                         <DataGrid.RowStyle>

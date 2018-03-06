@@ -1,8 +1,8 @@
 ﻿<Window x:Name="FenetreChoixCompetition" x:Class="CompetitionJudo.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="JCV Compétition"
-        Height="340"
+        Title="Judo Compétition"
+        Height="420"
         Width="390" 
         BorderBrush="#FF101AE4" 
         Foreground="Black" 
@@ -17,13 +17,22 @@
         <StackPanel>
             <Expander Header="Nouvelle Compétition" IsExpanded="False" Margin="0,5" >
                 <StackPanel  Height="152" >
-                    <TextBox Height="23" TextWrapping="Wrap" Name="TextBoxNom" Text="{Binding NomNouvelleCompetition}" Margin="10,5" GotFocus="TextBox_GotFocus" ToolTip="Nom" Width="250" HorizontalAlignment="Left"/>
-                    <TextBox Height="23" TextWrapping="Wrap" Name="TextBoxLieu"  Text="{Binding LieuNouvelleCompetition}" Margin="10,5" GotFocus="TextBox_GotFocus_1" ToolTip="Lieu" Width="250" HorizontalAlignment="Left" />
-                    <DatePicker Name="SelecteurDate" SelectedDate="{Binding DateNouvelleCompetition}" Margin="10,5" Width="250" HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Nom" Width="50"></Label>
+                        <TextBox Height="23" TextWrapping="Wrap" Name="TextBoxNom" Text="{Binding NomNouvelleCompetition}" Margin="10,5" GotFocus="TextBox_GotFocus" ToolTip="Nom" Width="250" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lieu" Width="50"></Label>
+                        <TextBox Height="23" TextWrapping="Wrap" Name="TextBoxLieu"  Text="{Binding LieuNouvelleCompetition}" Margin="10,5" GotFocus="TextBox_GotFocus_1" ToolTip="Lieu" Width="250" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Date" Width="50"></Label>
+                        <DatePicker Name="SelecteurDate" SelectedDate="{Binding DateNouvelleCompetition}" Margin="10,5" Width="250" HorizontalAlignment="Left"/>
+                    </StackPanel>
                     <Button Click="NouvelleCompetition_Click_1" Height="40" Width="260" Margin="0,5" Name="BoutonNouvelleCompetition" IsEnabled="{Binding EnableButtons}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Tableau.png" Width="30" Height="30" Margin="5,0"></Image>
-                            <TextBlock Text="Créér Compétition" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Créer Compétition" VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -35,10 +44,16 @@
                     <TextBlock Text="Ouvrir Compétition" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
             </Button>
-             <Button Click="BoutonTelechargerFichierImport_Click" Height="40" Width="260" Margin="0,5" Name="BoutonTelechargerFichierImport" IsEnabled="{Binding EnableButtons}">
+            <Button Click="BoutonTelechargerFichierImport_Click" Height="40" Width="260" Margin="0,5" Name="BoutonTelechargerFichierImport" IsEnabled="{Binding EnableButtons}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Importer.png" Width="30" Height="30" Margin="5,0"></Image>
                     <TextBlock Text="Télécharger Fichier Import" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Height="40" Width="260" Margin="0,5" Click="BoutonAide_Click" Name="BoutonAide" IsEnabled="{Binding EnableButtons}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/help.png" Width="30" Height="30" Margin="10,0"></Image>
+                    <TextBlock Text="Aide" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
             </Button>
         </StackPanel>

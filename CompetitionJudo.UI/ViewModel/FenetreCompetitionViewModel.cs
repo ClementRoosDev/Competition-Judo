@@ -709,9 +709,8 @@ namespace CompetitionJudo.UI.ViewModel
             }
             else
             {
-                MessageBox.Show(String.Format("Aucun de groupe cochés pour l'impression", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
+                MessageBox.Show(String.Format("Aucun groupe coché pour l'impression", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error));
             }
-
         }
 
         public async void EditCompetiteur()

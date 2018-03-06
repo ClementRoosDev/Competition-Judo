@@ -104,6 +104,20 @@ namespace CompetitionJudo.UI
             tb.GotFocus -= TextBox_GotFocus_1;
         }
 
+
+        private void BoutonAide_Click(object sender, RoutedEventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = "pptx";
+            saveFileDialog.Filter = "Powerpoint files (*.pptx)|*pptx";
+            saveFileDialog.FileName = "Competition_Judo_Guide";
+
+            if ((bool)saveFileDialog.ShowDialog())
+            {
+                File.WriteAllBytes(saveFileDialog.FileName, Properties.Resources.Guide);
+            }
+        }
+        
         #endregion
     }
 }
