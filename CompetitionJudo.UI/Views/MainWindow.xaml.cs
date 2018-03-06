@@ -1,56 +1,41 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Xml.Serialization;
 using Microsoft.Win32;
-using System.Windows.Media.Imaging;
-using CompetitionJudo.Business;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Threading;
 using CompetitionJudo.Business.Serialisation;
 using CompetitionJudo.Data.Donnees;
 using System.Threading.Tasks;
-using CompetitionJudo.Data;
 using CompetitionJudo.Business.CompetitionManager;
-using CompetitionJudo.UI.Properties;
 using CompetitionJudo.UI.ViewModel;
 
 namespace CompetitionJudo.UI
 {
     public partial class MainWindow : Window
     {
+        #region Private Properties
+
         private MainWindowViewModel VM;
-        
+
+        #endregion
+
+        #region Constructor 
+
         public MainWindow()
         {
             InitializeComponent();
             VM = new MainWindowViewModel();
-            this.DataContext = VM;      
+            DataContext = VM;
         }
+
+        #endregion
+
+        #region Action UI (clicks)
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {        
-            var fenetreNewCompetition = new FenetreCompetition(new Donnee());           
+        {
+            var fenetreNewCompetition = new FenetreCompetition(new Donnee());
             fenetreNewCompetition.Show();
-            this.Close();
-        }
-
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox tb = (TextBox) sender;
-            tb.Text = string.Empty;
-            tb.GotFocus -= TextBox_GotFocus;
-        }
-
-        private void TextBox_GotFocus_1(object sender, RoutedEventArgs e)
-        {
-            var tb = (TextBox) sender;
-            tb.Text = string.Empty ;
-            tb.GotFocus -= TextBox_GotFocus_1;
+            Close();
         }
 
         private async void OuvrirCompetition_Click(object sender, RoutedEventArgs e)
@@ -66,33 +51,59 @@ namespace CompetitionJudo.UI
 
                 var fenetreCompetition = new FenetreCompetition(result);
 
-
                 fenetreCompetition.Show();
                 Close();
             }
         }
-        
+
         private void NouvelleCompetition_Click_1(object sender, RoutedEventArgs e)
         {
             var dialog = new SaveFileDialog();
             dialog.Filter = "xml files (*.xml)|*.xml";
-            dialog.FileName = string.Format("{0} {1:MM-dd-yyyy} {2}", VM.NomNouvelleCompetition, VM.DateNouvelleCompetition,VM.LieuNouvelleCompetition);
+            dialog.FileName = string.Format("{0} {1:MM-dd-yyyy} {2}", VM.NomNouvelleCompetition, VM.DateNouvelleCompetition, VM.LieuNouvelleCompetition);
 
             if ((bool)dialog.ShowDialog())
             {
                 VM.IsLoading = true;
 
                 CompetitionManager CM = new CompetitionManager();
-                var donneesNouvelleCompetition = CM.CreerNouvelleCompetition(VM.LieuNouvelleCompetition,VM.NomNouvelleCompetition, VM.DateNouvelleCompetition,dialog.FileName);
+                var donneesNouvelleCompetition = CM.CreerNouvelleCompetition(VM.LieuNouvelleCompetition, VM.NomNouvelleCompetition, VM.DateNouvelleCompetition, dialog.FileName);
                 DataSerialisation DS = new DataSerialisation();
-                DS.EnregistrerCompetition(dialog.FileName,donneesNouvelleCompetition);
+                DS.EnregistrerCompetition(dialog.FileName, donneesNouvelleCompetition);
                 var fenetreCompetition = new FenetreCompetition(donneesNouvelleCompetition);
                 fenetreCompetition.Show();
 
-                Close();                  
+                Close();
             }
-        }        
+        }
 
-        
+        private void BoutonTelechargerFichierImport_Click(object sender, RoutedEventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = "xlsx";
+            saveFileDialog.Filter = "Excel files (*.xlsx)|*xlsx";
+            saveFileDialog.FileName = "Inscription_Tournoi_Judo";
+
+            if ((bool)saveFileDialog.ShowDialog())
+            {
+                File.WriteAllBytes(saveFileDialog.FileName, Properties.Resources.Inscription_Tournoi_Judo);
+            }
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= TextBox_GotFocus;
+        }
+
+        private void TextBox_GotFocus_1(object sender, RoutedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= TextBox_GotFocus_1;
+        }
+
+        #endregion
     }
 }

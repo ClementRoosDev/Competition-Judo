@@ -1,31 +1,19 @@
-﻿using CompetitionJudo.Business;
-using CompetitionJudo.Data;
+﻿using CompetitionJudo.Data;
 using CompetitionJudo.UI.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CompetitionJudo.UI
 {
-    /// <summary>
-    /// Logique d'interaction pour FenetreVide.xaml
-    /// </summary>
     public partial class FenetreImportCompetiteurs : Window
     {
-        private FenetreImportCompetiteursViewModel VM;   
-        
+        #region Private Properties
+
+        private FenetreImportCompetiteursViewModel VM;
+
+        #endregion
+
+        #region Constructor
 
         public FenetreImportCompetiteurs(Action<Competiteur> action, string cheminFichier)
         {
@@ -34,7 +22,12 @@ namespace CompetitionJudo.UI
             VM = new FenetreImportCompetiteursViewModel(cheminFichier,action);
             VM.ImporterFichier();
             DataContext = VM;
+            MessageBox.Show($"{VM.ListeNouveauxCompetiteur.Count} compétiteurs importés", "Import", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        #endregion
+
+        #region UI Actions (Clicks)
 
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
@@ -48,6 +41,8 @@ namespace CompetitionJudo.UI
         private void ButtonAnnuler_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }        
+        }
+        
+        #endregion
     }
 }

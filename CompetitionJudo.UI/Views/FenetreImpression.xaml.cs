@@ -13,13 +13,18 @@ namespace CompetitionJudo.UI
 
     public partial class FenetreImpression : Window
     {
-        FenetreImpressionViewModel VM;
+        #region Private Properties
 
+        FenetreImpressionViewModel VM;
         List<Competiteur> actualSelected = new List<Competiteur>();
 
-        #region style
+        #endregion
+
+        #region Style
+
         private Font drawFont = new Font("Arial", 9);
         private SolidBrush drawBrush = new SolidBrush(Color.Black);
+
         #endregion
 
         public FenetreImpression(List<Groupe> lesGroupes, string nomCompetition, DateTime dateCompetition)
@@ -114,7 +119,7 @@ namespace CompetitionJudo.UI
             g.DrawString(string.Format("Temps Immobilisation Ippon : {0}s", ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds), drawFont, drawBrush, new PointF(20, 60));
             g.DrawString(string.Format("Temps Immobilisation Waza Ari : {0}s", ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds - 5), drawFont, drawBrush, new PointF(20, 80));
             g.DrawString(string.Format("Temps Immobilisation Yuko : {0}s", ig.Groupe.TempsImmo.TimeSinceLastEvent.Seconds - 10), drawFont, drawBrush, new PointF(20, 100));
-            
+
             for (int i = 0; i < ig.Organisation.grilleCompetiteurs.Count; i++)
             {
                 var cdn = ig.Organisation.listeCoordonneesNom[i];
@@ -188,7 +193,7 @@ namespace CompetitionJudo.UI
             if (VM.ElementsAImprimer <= 2)
             {
                 ev.HasMorePages = false;
-            }                
+            }
             else
             {
                 ev.HasMorePages = true;

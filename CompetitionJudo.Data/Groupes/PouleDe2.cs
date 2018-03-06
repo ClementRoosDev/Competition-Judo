@@ -25,16 +25,16 @@ namespace CompetitionJudo.Data
             listeCoordonneesNom = new List<Coordonnee>();
             listeCoordonneesPrenom = new List<Coordonnee>();
             listeCoordonneesClub = new List<Coordonnee>();
-            var n1 = new Coordonnee(45, 210);
-            var n2 = new Coordonnee(45, 270);
+            var n1 = new Coordonnee(48, 210);
+            var n2 = new Coordonnee(48, 270);
             listeCoordonneesNom.Add(n1);
             listeCoordonneesNom.Add(n2);
-            var p1 = new Coordonnee(145, 210);
-            var p2 = new Coordonnee(145, 270);
+            var p1 = new Coordonnee(144, 210);
+            var p2 = new Coordonnee(144, 270);
             listeCoordonneesPrenom.Add(p1);
             listeCoordonneesPrenom.Add(p2);
-            var c1 = new Coordonnee(258, 210);
-            var c2 = new Coordonnee(258, 270);
+            var c1 = new Coordonnee(257, 210);
+            var c2 = new Coordonnee(257, 270);
             listeCoordonneesClub.Add(c1);
             listeCoordonneesClub.Add(c2);
         }

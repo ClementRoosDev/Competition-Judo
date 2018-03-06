@@ -13,8 +13,8 @@
         FontSize="14"
         WindowStyle="ToolWindow"
         WindowStartupLocation="CenterScreen">
-    <GroupBox Header="Compétition" HorizontalAlignment="Center"  VerticalAlignment="Top"  Width="360" > 
-        <StackPanel>           
+    <GroupBox Header="Compétition" HorizontalAlignment="Center"  VerticalAlignment="Top"  Width="360" >
+        <StackPanel>
             <Expander Header="Nouvelle Compétition" IsExpanded="False" Margin="0,5" >
                 <StackPanel  Height="152" >
                     <TextBox Height="23" TextWrapping="Wrap" Name="TextBoxNom" Text="{Binding NomNouvelleCompetition}" Margin="10,5" GotFocus="TextBox_GotFocus" ToolTip="Nom" Width="250" HorizontalAlignment="Left"/>
@@ -23,7 +23,7 @@
                     <Button Click="NouvelleCompetition_Click_1" Height="40" Width="260" Margin="0,5" Name="BoutonNouvelleCompetition" IsEnabled="{Binding EnableButtons}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Tableau.png" Width="30" Height="30" Margin="5,0"></Image>
-                            <TextBlock Text="Nouvelle Compétition" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Créér Compétition" VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -35,7 +35,12 @@
                     <TextBlock Text="Ouvrir Compétition" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
             </Button>
-            <ProgressBar Name="ProgressBar" Width="260" Height="22" Margin="10,0" IsIndeterminate="{Binding IsLoading}" />
+             <Button Click="BoutonTelechargerFichierImport_Click" Height="40" Width="260" Margin="0,5" Name="BoutonTelechargerFichierImport" IsEnabled="{Binding EnableButtons}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Importer.png" Width="30" Height="30" Margin="5,0"></Image>
+                    <TextBlock Text="Télécharger Fichier Import" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Button>
         </StackPanel>
-    </GroupBox>    
+    </GroupBox>
 </Window>

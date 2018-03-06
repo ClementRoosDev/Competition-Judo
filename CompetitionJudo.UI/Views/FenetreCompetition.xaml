@@ -54,13 +54,13 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Options" Width="340"  Margin="5,5,5,5">
+            <GroupBox Header="Options compétition" Width="340"  Margin="5,5,5,5">
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,5">
                     <StackPanel Orientation="Vertical">
-                        <Button x:Name="boutonGenererPoules" HorizontalAlignment="Right" Width="140"  Margin="10,5" Height="40" Command="{Binding ClickGenererGroupes}">
+                        <Button x:Name="boutonEnregistrerCompetition" Margin="10,5" Height="40" Command="{Binding ClickButtonEnregistrerCompetition}">
                             <StackPanel Orientation="Horizontal">
-                                <Image  Name="ImageGenerer" Source="/Resources/process.png" Width="25" Height="30" Margin="5,0"/>
-                                <TextBlock Text="Génerer poules" VerticalAlignment="Center"></TextBlock>
+                                <Image Name="ImageEnregistrer" Source="/Resources/Enregistrer.png" Width="30" Height="30" Margin="5,0"/>
+                                <TextBlock Text="Enregistrer" VerticalAlignment="Center"></TextBlock>
                             </StackPanel>
                         </Button>
                         <Button x:Name="boutonImporterExcel" HorizontalAlignment="Right" Width="140" Margin="10,5" Height="40" Click="boutonImporterExcel_Click">
@@ -77,22 +77,21 @@
                                 <TextBlock Text="Paramètres" VerticalAlignment="Center"></TextBlock>
                             </StackPanel>
                         </Button>
-
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Imprimer / Enregistrer" Width="340" MaxWidth="600" Margin="5,5,5,5">
+            <GroupBox Header="Générer / Imprimer groupes" Width="340" MaxWidth="600" Margin="5,5,5,5">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5,5,5,5">
-                    <Button x:Name="boutonGenererUnGroupe" Height="40" Command="{Binding ClickImprimerGroupes}" Click="boutonGenererUnGroupe_Click">
+                    <Button x:Name="boutonGenererPoules" HorizontalAlignment="Right" Width="140"  Margin="10,5" Height="40" Command="{Binding ClickGenererGroupes}">
                         <StackPanel Orientation="Horizontal">
-                            <Image Name="ImageImprimer" Source="/Resources/Imprimer.png" Width="25" Height="25" Margin="5,0"/>
-                            <TextBlock Text="Imprimer" VerticalAlignment="Center"></TextBlock>
+                            <Image  Name="ImageGenerer" Source="/Resources/process.png" Width="25" Height="30" Margin="5,0"/>
+                            <TextBlock Text="Génerer poules" VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="boutonEnregistrerCompetition" Margin="10,0,10,0"  Height="40" Command="{Binding ClickButtonEnregistrerCompetition}">
+                    <Button x:Name="boutonGenererUnGroupe" Height="40"  Margin="10,5" Width="100" Command="{Binding ClickImprimerGroupes}" Click="boutonGenererUnGroupe_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Name="ImageEnregistrer" Source="/Resources/Enregistrer.png" Width="30" Height="30" Margin="5,0"/>
-                            <TextBlock Text="Enregistrer" VerticalAlignment="Center"></TextBlock>
+                            <Image Name="ImageImprimer" Source="/Resources/Imprimer.png" Width="25" Height="30" Margin="5,0"/>
+                            <TextBlock Text="Imprimer" VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -209,7 +208,7 @@
                                         <ComboBox Name="FiltreColonneCategorie" Margin="10,0,0,0"  IsSynchronizedWithCurrentItem="True" SelectionChanged="FiltresGrille_SelectionChanged" Text="Tous" IsReadOnly="True" IsEditable="False"/>
                                     </StackPanel>
                                 </DataGridTextColumn.Header>
-                            </DataGridTextColumn>                      
+                            </DataGridTextColumn>
 
                             <DataGridTextColumn Header="Resultat" Binding="{Binding Resultat, TargetNullValue=''}" />
                         </DataGrid.Columns>

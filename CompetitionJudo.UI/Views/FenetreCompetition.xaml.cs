@@ -13,9 +13,13 @@ namespace CompetitionJudo.UI
 {
     public partial class FenetreCompetition : Window
     {
-        FenetreCompetitionViewModel VM;
+        #region Private Properties 
 
-        #region ctor
+        private FenetreCompetitionViewModel VM;
+
+        #endregion
+
+        #region Constructor
         public FenetreCompetition(Donnee donnee)
         {
             InitializeComponent();
@@ -28,7 +32,7 @@ namespace CompetitionJudo.UI
         }
         #endregion
 
-        #region focus sur les champs de texte
+        #region Focus sur les champs de texte
 
         private void texteNom_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -59,11 +63,7 @@ namespace CompetitionJudo.UI
             var tb = (ComboBox)sender;
             tb.Text = string.Empty;
         }
-
-        #endregion
-
-        // Test sur l'input du poids
-
+                
         private void textePoids_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             foreach (char c in e.Text)
@@ -73,7 +73,9 @@ namespace CompetitionJudo.UI
                     e.Handled = true;
                 }
             }
-        }        
+        }
+        
+        #endregion
 
         #region Filtres Grille
 
@@ -122,17 +124,17 @@ namespace CompetitionJudo.UI
 
         }
 
-        //Import depuis CSV
+        //Import depuis fichier Excel
         private void boutonImporterExcel_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var dialog = new OpenFileDialog();
-                dialog.Filter = "Files (*.csv;*.xls;*xlsx)|*.csv;*.xls;*.xlsx";
-                if ((bool)dialog.ShowDialog())
+                var openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Files (*.csv;*.xls;*xlsx)|*.csv;*.xls;*.xlsx";
+                if ((bool)openFileDialog.ShowDialog())
                 {
                     Action<Competiteur> addCompetiteursCallback = addCompetiteurs;
-                    FenetreImportCompetiteurs fenetre = new FenetreImportCompetiteurs(addCompetiteursCallback, dialog.FileName);
+                    FenetreImportCompetiteurs fenetre = new FenetreImportCompetiteurs(addCompetiteursCallback, openFileDialog.FileName);
                     fenetre.ShowDialog();
                 }
 
@@ -203,8 +205,7 @@ namespace CompetitionJudo.UI
             }
             VM.ListeGroupes = listGroupPourImpression;
         }
-
-
+        
         #endregion
     }
 }

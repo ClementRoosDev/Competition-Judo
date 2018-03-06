@@ -531,7 +531,9 @@ namespace CompetitionJudo.UI.ViewModel
 
         public void QuickAddCompetiteur(Competiteur competiteur)
         {
-            Competiteur Comp = Donnee.ListeCompetiteurs.Where(c => c.Nom.ToLower().Equals(competiteur.Nom.ToLower()) && c.Prenom.ToLower().Equals(competiteur.Prenom.ToLower())).FirstOrDefault();
+            Competiteur Comp = Donnee.ListeCompetiteurs
+                            .Where(c => c.Nom.ToLower().Equals(competiteur.Nom.ToLower())
+                                    && c.Prenom.ToLower().Equals(competiteur.Prenom.ToLower())).FirstOrDefault();
 
             if (Comp == null)
             {
@@ -540,17 +542,12 @@ namespace CompetitionJudo.UI.ViewModel
             }
             else
             {
-                if (MessageBox.Show(string.Format("Un judoka identique existe déjà : {0}-{1} {2} {3}kg {4} {5} Ajouter quand même : {6}-{7} {8} {9}kg {10}",
+                if (!(MessageBox.Show(string.Format("Un judoka identique existe déjà : {0}-{1} {2} {3}kg {4} {5} Ajouter quand même : {6}-{7} {8} {9}kg {10}",
                     Environment.NewLine, Comp.Nom, Comp.Prenom, Comp.Poids, Comp.Categorie,
                     Environment.NewLine,
-                    Environment.NewLine, competiteur.Nom, competiteur.Prenom, competiteur.Poids, competiteur.Categorie), "Doublon", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-                {
-
-                }
-                else
+                    Environment.NewLine, competiteur.Nom, competiteur.Prenom, competiteur.Poids, competiteur.Categorie), "Doublon", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No))
                 {
                     Donnee.ListeCompetiteurs.Add(competiteur);
-
                 }
             }
             OnPropertyChanged("ListeCompetiteurs");
@@ -645,7 +642,7 @@ namespace CompetitionJudo.UI.ViewModel
         private void GenererGroupes()
         {
             Donnee.ListeCompetiteurs = new ObservableCollection<Competiteur>(Donnee.ListeCompetiteurs.OrderBy(c => c.Categorie).ThenBy(d => d.Sexe).ThenBy(f => f.Poids).ToList());
-            
+
             int poule = 1;
             int compteur = 1;
 

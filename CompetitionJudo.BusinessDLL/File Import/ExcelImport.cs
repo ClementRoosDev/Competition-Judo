@@ -23,40 +23,47 @@ namespace CompetitionJudo.Business.File_Import
                 string headerLine = await reader.ReadLineAsync();
                 while (!reader.EndOfStream)
                 {
-                    line = reader.ReadLine();
-                    var values = line.Split(';');
-
-                    if (!String.IsNullOrWhiteSpace(values[0]) && !String.IsNullOrWhiteSpace(values[1]) && !String.IsNullOrWhiteSpace(values[5]))
+                    try
                     {
-                        Competiteur competiteurTemporaire = new Competiteur
-                        {
-                            Nom = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(values[0].ToLower()),
-                            Prenom = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(values[1].ToLower()),
-                            Club = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(values[4].ToLower()),
-                        };
+                        line = reader.ReadLine();
+                        var values = line.Split(';');
 
-                        Sexes sexOut;
-                        if (Enum.TryParse(values[2], out sexOut))
+                        if (!String.IsNullOrWhiteSpace(values[0]) && !String.IsNullOrWhiteSpace(values[1]) && !String.IsNullOrWhiteSpace(values[5]))
                         {
-                            competiteurTemporaire.Sexe = (Sexes)Enum.Parse(typeof(Sexes), values[2]);
-                        }
+                            Competiteur competiteurTemporaire = new Competiteur
+                            {
+                                Nom = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(values[0].ToLower()),
+                                Prenom = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(values[1].ToLower()),
+                                Club = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(values[4].ToLower()),
+                            };
 
-                        double doubleOut;
-                        if (double.TryParse(values[3], out doubleOut))
-                        {
-                            competiteurTemporaire.Poids = Convert.ToDouble(values[3]);
-                        }
-                        else
-                        {
-                            competiteurTemporaire.Poids = 0;
-                        }
+                            Sexes sexOut;
+                            if (Enum.TryParse(values[2], out sexOut))
+                            {
+                                competiteurTemporaire.Sexe = (Sexes)Enum.Parse(typeof(Sexes), values[2]);
+                            }
 
-                        Categories categoriesOut;
-                        if (Enum.TryParse(values[5], out categoriesOut))
-                        {
-                            competiteurTemporaire.Categorie = (Categories)Enum.Parse(typeof(Categories), values[5]);
+                            double doubleOut;
+                            if (double.TryParse(values[3], out doubleOut))
+                            {
+                                competiteurTemporaire.Poids = Convert.ToDouble(values[3]);
+                            }
+                            else
+                            {
+                                competiteurTemporaire.Poids = 0;
+                            }
+
+                            Categories categoriesOut;
+                            if (Enum.TryParse(values[5], out categoriesOut))
+                            {
+                                competiteurTemporaire.Categorie = (Categories)Enum.Parse(typeof(Categories), values[5]);
+                            }
+                            ListeResult.Add(competiteurTemporaire);
                         }
-                        ListeResult.Add(competiteurTemporaire);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
                     }
                 }
             }
@@ -65,7 +72,9 @@ namespace CompetitionJudo.Business.File_Import
 
         public List<Competiteur> ImporterXLS(string cheminFichier)
         {
-            List<Competiteur> ListeResult = new List<Competiteur>();
+            List<Competiteur> listeResult = new List<Competiteur>();
+
+            List<string> rejectList = new List<string>();
 
             using (Stream stream = new FileStream(cheminFichier,
                                  FileMode.Open,
@@ -79,39 +88,59 @@ namespace CompetitionJudo.Business.File_Import
                 excelReader.Read();
                 while (excelReader.Read())
                 {
-                    Competiteur competiteurTemporaire = new Competiteur
+                    Competiteur competiteurTemporaire = null;
+                    try
                     {
-                        Nom = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(excelReader.GetString(0).ToLower()),
-                        Prenom = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(excelReader.GetString(1).ToLower()),
-                        Club = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(excelReader.GetString(4).ToLower()),
-                    };
+                        competiteurTemporaire = new Competiteur
+                        {
+                            Nom = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(excelReader.GetString(0).ToLower()),
+                            Prenom = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(excelReader.GetString(1).ToLower()),
+                            Club = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(excelReader.GetString(4).ToLower()),
+                        };
 
-                    Sexes sexOut;
-                    if (Enum.TryParse(excelReader.GetString(2), out sexOut))
-                    {
-                        competiteurTemporaire.Sexe = (Sexes)Enum.Parse(typeof(Sexes), excelReader.GetString(2));
-                    }
+                        Sexes sexOut;
+                        if (Enum.TryParse(excelReader.GetString(2), out sexOut))
+                        {
+                            competiteurTemporaire.Sexe = (Sexes)Enum.Parse(typeof(Sexes), excelReader.GetString(2));
+                        }
 
-                    double doubleOut;
-                    if (double.TryParse(excelReader.GetString(3), out doubleOut))
-                    {
-                        competiteurTemporaire.Poids = Convert.ToDouble(excelReader.GetString(3));
-                    }
-                    else
-                    {
-                        competiteurTemporaire.Poids = 0;
-                    }
+                        double doubleOut;
+                        if (double.TryParse(excelReader.GetString(3), out doubleOut))
+                        {
+                            competiteurTemporaire.Poids = Convert.ToDouble(excelReader.GetString(3));
+                        }
+                        else
+                        {
+                            competiteurTemporaire.Poids = 0;
+                        }
 
-                    Categories categoriesOut;
-                    if (Enum.TryParse(excelReader.GetString(5), out categoriesOut))
-                    {
-                        competiteurTemporaire.Categorie = (Categories)Enum.Parse(typeof(Categories), excelReader.GetString(5));
-                    }
+                        Categories categoriesOut;
+                        if (Enum.TryParse(excelReader.GetString(5), out categoriesOut))
+                        {
+                            competiteurTemporaire.Categorie = (Categories)Enum.Parse(typeof(Categories), excelReader.GetString(5));
 
-                    ListeResult.Add(competiteurTemporaire);
+                            if (competiteurTemporaire.Categorie == Categories.Tous)
+                            {
+                                throw new Exception($"Catégorie mal formattée : {excelReader.GetString(5)}");
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception($"Catégorie mal formattée : {excelReader.GetString(5)}");
+                        }
+                        if (competiteurTemporaire != null)
+                        {
+                            listeResult.Add(competiteurTemporaire);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
                 }
             }
-            return ListeResult;
+            
+            return listeResult;
         }
     }
 }
